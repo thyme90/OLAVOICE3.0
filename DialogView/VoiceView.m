@@ -30,7 +30,7 @@
 
 @interface VoiceView()<ViaVoiceDelegate,DialogViewDelegate,CAAnimationDelegate,YSCVoiceWaveViewDeleagte>
 @property (nonatomic,strong) ViaVoice               *viaVoiceSDK;//语音转文字的接口
-@property (nonatomic,strong) DialogView             *DlgView;//tableView所在的视图
+
 @property (nonatomic,strong) NSString               *ttsText;//tts播放的文本
 @property (nonatomic,strong) NSString               *ttsStr;//语音转换后的字符串
 @property (nonatomic,strong) YSCVoiceWaveView       *voiceWaveView;//水波纹

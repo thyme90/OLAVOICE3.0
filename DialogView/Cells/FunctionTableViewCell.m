@@ -153,26 +153,26 @@
 -(void)initData{
     _arry = [[NSMutableArray alloc] init];
     NSDictionary *dic1 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          @"circularBlue4",@"imgName",
+                          @"icn_smarthome",@"imgName",
                           @"智能家居",@"upText",
                           @"“打开音响设备”",@"downText",nil];
     [_arry addObject:dic1];
     
     NSDictionary *dic2 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          @"circularBlue4",@"imgName",
+                          @"icn_weather",@"imgName",
                           @"天气",@"upText",
                           @"“今天天气怎么样”",@"downText",nil];
     [_arry addObject:dic2];
     
     
     NSDictionary *dic3 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          @"circularBlue4",@"imgName",
+                          @"icn_news",@"imgName",
                           @"新闻",@"upText",
                           @"“今天有什么新闻”",@"downText",nil];
     [_arry addObject:dic3];
     
     NSDictionary *dic4 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          @"circularBlue4",@"imgName",
+                          @"icn_share",@"imgName",
                           @"百科",@"upText",
                           @"“我要查百科”",@"downText",nil];
     [_arry addObject:dic4];
