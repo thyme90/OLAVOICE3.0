@@ -10,6 +10,12 @@
 #import "PersonBaikeModel.h"
 #import "CellTableViewCell.h"
 
+
+/****
+ 当询问“历届国家主席是谁的时候”,调用这个类，是一个选择界面
+ */
+
+
 @interface PersonBaikeItemView : UIView
 -(id)init;
 -(void)setDatas:(PersonBaikeData*) personData num:(NSString*)num;

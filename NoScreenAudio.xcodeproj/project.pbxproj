@@ -550,7 +550,6 @@
 		0A5D5D8F1DEE71370076E919 /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
 		0A5D5D901DEE71370076E919 /* WeatherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherTableViewCell.h; sourceTree = "<group>"; };
 		0A5D5D911DEE71370076E919 /* WeatherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewCell.m; sourceTree = "<group>"; };
-		0A5D5D921DEE71370076E919 /* commonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commonHeader.h; sourceTree = "<group>"; };
 		0A5D5D941DEE71370076E919 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		0A5D5D951DEE71370076E919 /* libpcre.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpcre.a; sourceTree = "<group>"; };
 		0A5D5D971DEE71370076E919 /* ViaVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViaVoice.h; sourceTree = "<group>"; };
@@ -1073,7 +1072,6 @@
 			isa = PBXGroup;
 			children = (
 				0A5D5D691DEE71370076E919 /* Cells */,
-				0A5D5D921DEE71370076E919 /* commonHeader.h */,
 				0A5D5D931DEE71370076E919 /* DialogLib */,
 				0A5D5DFA1DEE71380076E919 /* DiaLogVendor */,
 				0A5D5E0D1DEE71380076E919 /* resource */,
