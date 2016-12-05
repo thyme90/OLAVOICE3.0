@@ -23,20 +23,22 @@
 #import "NSString+Extension.h"
 #import "TTSInterfaceAdapter.h"
 #import "SelectionBaikeModel.h"
+#import "FunctionModel.h"
 #import <iflyMSC/iflyMSC.h>
 
-#define APPID_VALUE           @"583bd19f"
+#define APPID_VALUE           @"583bd19f"//科大讯飞APPID
 
 @interface VoiceView()<ViaVoiceDelegate,DialogViewDelegate,CAAnimationDelegate,YSCVoiceWaveViewDeleagte>
+@property (nonatomic,strong) DialogView             *DlgView;
 @property (nonatomic,strong) ViaVoice               *viaVoiceSDK;//语音转文字的接口
-@property (nonatomic,strong) DialogView             *DlgView;//tableView所在的视图
 @property (nonatomic,strong) NSString               *ttsText;//tts播放的文本
 @property (nonatomic,strong) NSString               *ttsStr;//语音转换后的字符串
 @property (nonatomic,strong) YSCVoiceWaveView       *voiceWaveView;//水波纹
 @property (nonatomic,assign) BOOL                   isAnotherTopic;//如果不是新闻，百科和天气，就为true;
 @property (nonatomic,strong) TTSInterfaceAdapter    *ttsInterface;//语音播放的接口
 @property (nonatomic,strong) UIButton               *centerButton;//话筒
-@property (nonatomic,assign) int volPower;
+@property (nonatomic,assign) int                    volPower;//音量值
+@property (nonatomic,assign) BOOL                   isShow;//DialogView目前是否在显示，默认为true
 @end
 
 @implementation VoiceView
@@ -73,20 +75,22 @@
     _DlgView.sd_layout.leftSpaceToView(self,0)
     .topSpaceToView(self,0)
     .rightSpaceToView(self,0)
-    .heightRatioToView(self,0.8);
+    .heightRatioToView(self,0.88);
     
     
     _voiceWaveView = [[YSCVoiceWaveView alloc] init];
     _voiceWaveView.delegate = self;
     //_voiceWaveView.backgroundColor = [UIColor blueColor];
-    _voiceWaveView.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width, 220);
+    _voiceWaveView.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width, 110);
     [self.voiceWaveView startVoiceWave];
     [self addSubview:_voiceWaveView];
 
     
     _centerButton = [[UIButton alloc] init];
     [_centerButton setImage:[UIImage imageNamed:@"icnMicrophon"] forState:UIControlStateNormal];
+    [_centerButton setImage:[UIImage imageNamed:@"icnMicrophon"] forState:UIControlStateHighlighted];
     [_centerButton setImage:[UIImage imageNamed:@"icnMicrophon"] forState:UIControlStateSelected];
+    [_centerButton setImage:[UIImage imageNamed:@"icnMicrophon"] forState:UIControlStateSelected | UIControlStateHighlighted];
     _centerButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     _centerButton.imageView.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:_centerButton];
@@ -103,6 +107,7 @@
 
 
 -(void)buttonClick{
+    _isShow = NO;
     [self setButtonShadow:NO];
     
     [_ttsInterface stopSound];
@@ -123,7 +128,8 @@
     [_viaVoiceSDK setServer:@"http://api.olavoice.com:8000/olaweb/webvoice/api/ask?tts=1"];
     [_viaVoiceSDK setCUSID:OLAAPPID];
     _viaVoiceSDK.delegate = self;
-    }
+    _isShow = YES;
+}
 
 
 //################# VIAVOICE的代理的实现#####################################################
@@ -225,7 +231,7 @@
         SelectionBaikeModel    *model = [[SelectionBaikeModel alloc] initWithData:dic];
         [_DlgView.dataArray addObject:model];
         [_DlgView.modeTypeArray addObject:@"selectionbaike"];
-    }else{
+    }else {
         AnswerModel     *model = [[AnswerModel alloc] init];
         [_DlgView.dataArray addObject:model];
         [_DlgView.modeTypeArray addObject:@"answer"];
@@ -293,6 +299,7 @@
 
 #pragma mark --声音变化的值
 -(void)onVolumeChanged:(int)volume{
+    //范围是1~30
     _volPower = volume;
 //    NSString * vol = [NSString stringWithFormat:@"音量：%d",volume];
 //    NSLog(@"vol is %@",vol);
@@ -335,7 +342,7 @@
 -(float)volNum{
     float num = 0.0f;
     float vol = _volPower;
-    num = vol/90;
+    num = vol/60;
     //NSSLog(@"num is %f",num);
     return num;
 }
@@ -382,7 +389,7 @@
 #pragma makr--waterWave animation
 -(void)waterUpAnimation{ //水波纹上升的动画
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{
-        _voiceWaveView.frame = CGRectMake(0, self.frame.size.height-220, self.frame.size.width, 220);
+        _voiceWaveView.frame = CGRectMake(0, self.frame.size.height-110, self.frame.size.width, 110);
     }completion:^(BOOL finished){
         //NSLog(@"waterAnimatino done!");
     }];
@@ -423,6 +430,41 @@
     
     //所有服务启动前，需要确保执行createUtility
     [IFlySpeechUtility createUtility:initString];
+}
+
+-(void)createFunctionCell{
+    FunctionModel *model = [[FunctionModel alloc] init];
+    model.modelType = @"function";
+    
+    [_DlgView.dataArray addObject:model];
+    [_DlgView.modeTypeArray addObject:model.modelType];
+    
+    //[_DlgView.tableView reloadData];
+    unsigned long num = self.DlgView.dataArray.count;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:num-1  inSection:0];
+    [self.DlgView.tableView insertRowsAtIndexPaths:@[indexPath]
+                                  withRowAnimation:UITableViewRowAnimationNone];
+    [self.DlgView.tableView scrollToRowAtIndexPath:indexPath
+                                  atScrollPosition:UITableViewScrollPositionTop
+                                          animated:YES];
+}
+
+//如果显示主页，那么对话流页就进行隐藏
+-(void)DlgShow{
+    if (_isShow) {
+        [_ttsInterface stopSound];//停止播放语音
+        [UIView animateWithDuration:0.3 animations:^{
+            _DlgView.alpha = 0;
+        }];
+    }
+    
+    if(!_isShow){
+        [UIView animateWithDuration:0.3 animations:^{
+            _DlgView.alpha = 1;
+        }];
+    }
+    
+    _isShow = !_isShow;
 }
 
 @end

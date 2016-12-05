@@ -7,7 +7,6 @@
 //
 
 #import "DialogView.h"
-//#import "ViaVoice.h"
 #import "SDAutoLayout.h"
 #import "QuestionTableViewCell.h"
 #import "EditTableViewCell.h"
@@ -24,6 +23,9 @@
 #import "AnswerTableViewCell.h"
 #import "NSString+Extension.h"
 #import "SelectionBaikeTableViewCell.h"
+#import "FunctionTableViewCell.h"
+#import "NoneModel.h"
+#import "NoneTableViewCell.h"
 
 
 static NSString   *QuestionCellId               =  @"QuestionTableViewCellId";
@@ -35,6 +37,8 @@ static NSString   *BaikeCellId                  =  @"BaikeTableViewCellId";
 static NSString   *PersonBaikeCellId            =  @"PersonBaikeTableViewCellId";
 static NSString   *AnswerCellId                 =  @"AnswerTableViewCellId";//回到
 static NSString   *SelectionBaikeCellId         =  @"SelectionBaikeTableViewCellId";//百科选择
+static NSString   *FunctionCellId               =  @"FunctionTableViewCellId";//更多功能页
+static NSString   *NoneCellId                   =  @"NoneTableViewCellId";//提示页
 
 @interface DialogView()<UITableViewDelegate,UITableViewDataSource,EditTableViewCellDelegate,CellTableViewCellDelegate>
 @property (nonatomic,strong) EditTableViewCell  *tmpCell;//处于编辑状态的tmpCell
@@ -102,12 +106,11 @@ static NSString   *SelectionBaikeCellId         =  @"SelectionBaikeTableViewCell
     [[NSNotificationCenter
       defaultCenter] addObserver:self selector:@selector(keyboardDidHidden:) name:UIKeyboardDidHideNotification object:nil];
     
-    
-    //获取通知中心单例对象
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     //获得当前话筒点击事件的消息
-    [center addObserver:self selector:@selector(receiveMessage:) name:@"voiceClick" object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"voiceClick" object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveFunctionCellMessage:) name:@"functionshowbuttonclick" object:nil];
     
     
 
@@ -296,8 +299,33 @@ static NSString   *SelectionBaikeCellId         =  @"SelectionBaikeTableViewCell
 
         return cell;
         
+    }else if([type isEqualToString:@"function"]){
+        FunctionTableViewCell *cell = nil;
+        cell = [_tableView dequeueReusableCellWithIdentifier:FunctionCellId];
+        FunctionModel   *newModel = _dataArray[indexPath.row];
+        FunctionModel   *oldModel = cell.model;
+        
+        if (!cell || newModel != oldModel) {
+            cell = [[FunctionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FunctionCellId];
+        }
+        cell.model = _dataArray[indexPath.row];
+        cell.delegate = self;
+        return cell;
+        
+    }else if([type isEqualToString:@"tips"]){
+        NoneTableViewCell *cell = nil;
+        cell = [_tableView dequeueReusableCellWithIdentifier:NoneCellId];
+        NoneModel  *newModel = _dataArray[indexPath.row];
+        NoneModel   *oldModel = cell.model;
+        cell.delegate = self;
+        
+        if (!cell || newModel != oldModel) {
+            cell = [[NoneTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NoneCellId];
+        }
+        cell.model = _dataArray[indexPath.row];
+        return cell;
+        
     }
-    
 
     return nil;
 
@@ -326,6 +354,10 @@ static NSString   *SelectionBaikeCellId         =  @"SelectionBaikeTableViewCell
         currentClass = [AnswerTableViewCell class];
     }else if([type isEqualToString:@"selectionbaike"]){
         currentClass = [SelectionBaikeTableViewCell class];
+    }else if([type isEqualToString:@"function"]){
+        currentClass = [FunctionTableViewCell class];
+    }else if([type isEqualToString:@"tips"]){
+        currentClass = [NoneTableViewCell class];
     }
 
     
@@ -369,6 +401,11 @@ static NSString   *SelectionBaikeCellId         =  @"SelectionBaikeTableViewCell
 }
 
 -(void)receiveMessage:(NSNotification*)notice{
+    [self unfoldCell];
+}
+
+//折叠cell
+-(void)unfoldCell{
     //如果没有cell生成，则直接返回
     if (_dataArray.count == 0) {
         return;
@@ -382,14 +419,36 @@ static NSString   *SelectionBaikeCellId         =  @"SelectionBaikeTableViewCell
         if (cellH > 400) {//只有高度大于400cell才可以进行折叠
             CellModel   *model = _dataArray[indexPath.row];
             if (model) {
-                    if (!model.buttonIsShow) {
-                        model.buttonIsShow = YES;
-                        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                        
-                    }
+                if (!model.buttonIsShow) {
+                    model.buttonIsShow = YES;
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    
+                }
             }
         }
         
+    }
+
+}
+
+//接受FunctionCell发过来的信息
+-(void)receiveFunctionCellMessage:(NSNotification*)notice{
+    [self unfoldCell];
+    NSString *text = [notice object];
+    if ([text isEqualToString:@"“把rehoice翻译成中文”"]) {
+        NoneModel   *model = [[NoneModel alloc] init];
+        model.modelType = @"tips";
+        [_dataArray addObject:model];
+        [_modeTypeArray addObject:model.modelType];
+        unsigned long num = _dataArray.count;
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:num-1  inSection:0];
+        [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                          withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView scrollToRowAtIndexPath:indexPath
+                          atScrollPosition:UITableViewScrollPositionTop
+                                  animated:YES];
+    }else{
+        [self.delegate sendMessageToServer:text];
     }
 }
 

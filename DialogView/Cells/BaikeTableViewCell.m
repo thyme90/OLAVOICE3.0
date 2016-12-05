@@ -119,9 +119,6 @@
     _backView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"透明白背板"]];
     [self.contentView addSubview:_backView];
     
- 
-    
-    
 }
 
 -(void)setModel:(BaikeiModel *)model{
@@ -139,14 +136,16 @@
         _textView.scrollEnabled = NO;
         [_backView addSubview:_textView];
         
-        _imgView = [[UIImageView alloc] init];
-        [_backView addSubview:_imgView];
-        CGRect rect = CGRectMake(0, 0, 90, 90);
-        //设置环绕的路径
-        UIBezierPath * path = [UIBezierPath bezierPathWithRect:rect];
-        _textView.textContainer.exclusionPaths = @[path];
-        
-        [_imgView sd_setImageWithURL:[NSURL URLWithString:_model.photo_url] placeholderImage:[UIImage imageNamed:@"icnPicGrey"] options:SDWebImageProgressiveDownload];
+        if (![_model.photo_url isEmpty]) {
+            _imgView = [[UIImageView alloc] init];
+            [_backView addSubview:_imgView];
+            CGRect rect = CGRectMake(0, 0, 90, 90);
+            //设置环绕的路径
+            UIBezierPath * path = [UIBezierPath bezierPathWithRect:rect];
+            _textView.textContainer.exclusionPaths = @[path];
+            
+            [_imgView sd_setImageWithURL:[NSURL URLWithString:_model.photo_url] placeholderImage:[UIImage imageNamed:@"icnPicGrey"] options:SDWebImageProgressiveDownload];
+        }
         
         _itemLabelArray = [[NSMutableArray alloc] init];
         for (int i=0; i<_model.field_name.count; i++) {
@@ -171,14 +170,17 @@
         _textView.scrollEnabled = NO;
         [_backView addSubview:_textView];
         
-        _imgView = [[UIImageView alloc] init];
-        [_backView addSubview:_imgView];
-        CGRect rect = CGRectMake(0, 0, 90, 90);
-        //设置环绕的路径
-        UIBezierPath * path = [UIBezierPath bezierPathWithRect:rect];
-        _textView.textContainer.exclusionPaths = @[path];
-        
-        [_imgView sd_setImageWithURL:[NSURL URLWithString:_model.photo_url] placeholderImage:[UIImage imageNamed:@"icnPicGrey"] options:SDWebImageProgressiveDownload];
+        //如果没有图片，就不需要进行图片环绕
+        if (![_model.photo_url isEmpty]) {
+            _imgView = [[UIImageView alloc] init];
+            [_backView addSubview:_imgView];
+            CGRect rect = CGRectMake(0, 0, 90, 90);
+            //设置环绕的路径
+            UIBezierPath * path = [UIBezierPath bezierPathWithRect:rect];
+            _textView.textContainer.exclusionPaths = @[path];
+            
+            [_imgView sd_setImageWithURL:[NSURL URLWithString:_model.photo_url] placeholderImage:[UIImage imageNamed:@"icnPicGrey"] options:SDWebImageProgressiveDownload];
+        }
 
         
         _showButton = [[UIButton alloc] init];
@@ -210,12 +212,14 @@
         textHeight = 100.0f;
     }
     if (_itemLabelArray.count != 0) {
-        _imgView.sd_layout
-        .leftSpaceToView(_backView,15)
-        .topSpaceToView(_backView,25)
-        .widthIs(85)
-        .heightIs(85);
         
+        if (![_model.photo_url isEmpty]){
+            _imgView.sd_layout
+            .leftSpaceToView(_backView,15)
+            .topSpaceToView(_backView,25)
+            .widthIs(85)
+            .heightIs(85);
+        }
         
         _textView.sd_layout
         .leftSpaceToView(_backView,15)
@@ -271,13 +275,16 @@
     if (textHeight < 100) {
         textHeight = 100.0f;
     }
-    _imgView.sd_layout
-    .leftSpaceToView(_backView,15)
-    .topSpaceToView(_backView,25)
-    .widthIs(85)
-    .heightIs(85);
-        
-        
+    
+    
+    if (![_model.photo_url isEmpty]){
+        _imgView.sd_layout
+        .leftSpaceToView(_backView,15)
+        .topSpaceToView(_backView,25)
+        .widthIs(85)
+        .heightIs(85);
+    }
+
     _textView.sd_layout
     .leftSpaceToView(_backView,15)
     .topSpaceToView(_backView,15)

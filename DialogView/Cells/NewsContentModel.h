@@ -18,4 +18,5 @@
 @property (nonatomic,strong) NSString       *ref_url;
 @property (nonatomic,strong) NSString       *source;
 @property (nonatomic,strong) NSString       *indexNum;//说明当前是第几条新闻
+@property (nonatomic,assign) BOOL           isNull;//如果没有新闻，这个值为YES
 @end
