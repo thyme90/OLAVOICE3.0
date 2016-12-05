@@ -28,16 +28,21 @@
     self.ttsStr = [descDic objectForKey:@"result"];
     
     NSArray *arry = [_dicData objectForKey:@"data_obj"];
-    for (int i=0; i<arry.count; i++) {
-        NSDictionary    *dataDic = [arry objectAtIndex:i];
-        _image_url = [dataDic objectForKey:@"image_url"];
-        _ref_url = [dataDic objectForKey:@"ref_url"];
-        _time = [dataDic objectForKey:@"time"];
-        _detail = [dataDic objectForKey:@"detail"];
-        _source = [dataDic objectForKey:@"source"];
-        _title = [dataDic objectForKey:@"title"];
-        _indexNum = [[NSString alloc] initWithFormat:@"%d",i+1];
-    }
+    if (arry) {
+        for (int i=0; i<arry.count; i++) {
+            NSDictionary    *dataDic = [arry objectAtIndex:i];
+            _image_url = [dataDic objectForKey:@"image_url"];
+            _ref_url = [dataDic objectForKey:@"ref_url"];
+            _time = [dataDic objectForKey:@"time"];
+            _detail = [dataDic objectForKey:@"detail"];
+            _source = [dataDic objectForKey:@"source"];
+            _title = [dataDic objectForKey:@"title"];
+            _indexNum = [[NSString alloc] initWithFormat:@"%d",i+1];
+        }
 
+    }else{
+        _isNull = YES;
+    }
+    
 }
 @end

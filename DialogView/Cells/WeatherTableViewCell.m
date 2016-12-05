@@ -80,7 +80,7 @@
     .leftSpaceToView(self,30.7)
     .topSpaceToView(_weekday,5)
     .widthIs(30)
-    .heightIs(23);
+    .heightIs(25);
     
     _temperature_high_low.sd_layout
     .leftSpaceToView(self,0)

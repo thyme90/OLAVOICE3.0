@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DialogView;
 @interface VoiceView : UIView
 -(id)initWithFrame:(CGRect)frame;
+-(void)DlgShow;
 @end

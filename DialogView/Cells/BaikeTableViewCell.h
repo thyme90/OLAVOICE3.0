@@ -10,7 +10,9 @@
 #import "BaikeiModel.h"
 #import "CellTableViewCell.h"
 
-
+/*
+ 显示百科的详细界面
+ */
 @interface  itemLabel : UIView
 -(id)init;
 -(void)setData:(NSString*)leftValue rightValue:(NSString*)rightVal;

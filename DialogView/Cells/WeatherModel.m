@@ -154,109 +154,108 @@
 
 //天气图片的名称
 -(NSString*)iconName{
-    NSString *str = @"icnHeavyRain";
+    NSString *str = @"_e-晴";
     switch (_weather_start) {
         case 0:
-            str = @"icnHeavyRain";
+            str = @"_e-晴";
             break;
         case 1:
-            str = @"icnHeavyRain";
+            str = @"_e-雾";
             break;
         case 2:
-            str = @"icnHeavyRain";
+            str = @"_e-多云";
             break;
         case 3:
-            str = @"icnHeavyRain";
+            str = @"_e-晴";
             break;
         case 4:
-            str = @"icnHeavyRain";
+            str = @"_e-阵雨";
             break;
         case 5:
-            str = @"雷阵雨";
+            str = @"_e-雷阵雨";
             break;
         case 6:
-            str = @"小雨";
+            str = @"_e-小雨";
             break;
         case 7:
-            str = @"小到中雨";
+            str = @"_e-小雨";
             break;
         case 8:
-            str = @"中雨";
+            str = @"_e-中雨";
             break;
         case 9:
-            str = @"中到大雨";
+            str = @"_e-中雨";
             break;
         case 10:
-            str = @"大雨";
+            str = @"_e-大雨";
             break;
         case 11:
-            str = @"大到暴雨";
+            str = @"_e-大雨";
             break;
         case 12:
-            str = @"暴雨";
+            str = @"_e-大暴雨／特大暴雨";
             break;
         case 13:
-            str = @"暴雨到大暴雨";
+            str = @"_e-大暴雨／特大暴雨";
             break;
         case 14:
-            str = @"大暴雨";
+            str = @"_e-大暴雨／特大暴雨";
             break;
         case 15:
-            str = @"大暴雨到特大暴雨";
+            str = @"_e-大暴雨／特大暴雨";
             break;
         case 16:
-            str = @"特大暴雨";
+            str = @"_e-大暴雨／特大暴雨";
             break;
         case 17:
-            str = @"雷阵雨伴有冰雹";
+            str = @"_e-雷阵雨伴冰雹";
             break;
         case 18:
-            str = @"雨夹雪";
+            str = @"_e-雨夹雪";
             break;
         case 19:
-            str = @"冻雨";
+            str = @"_e-冻雨";
             break;
         case 20:
-            str = @"晴";
+            str = @"_e-阵雪";
             break;
         case 21:
-            str = @"晴";
+            str = @"_e-小雪";
             break;
         case 22:
-            str = @"晴";
+            str = @"_e-中雪";
             break;
         case 23:
-            str = @"晴";
+            str = @"_e-中雪";
             break;
         case 24:
-            str = @"晴";
+            str = @"_e-中雪";
             break;
         case 25:
-            str = @"晴";
+            str = @"_e-大雪";
             break;
         case 26:
-            str = @"晴";
+            str = @"_e-暴雪";
             break;
         case 27:
-            str = @"晴";
+            str = @"_e-暴雪";
             break;
         case 28:
-            str = @"晴";
+            str = @"_e-浮尘-扬尘";
             break;
         case 29:
-            str = @"晴";
+            str = @"_e-浮尘-扬尘";
             break;
         case 30:
-            str = @"晴";
+            str = @"_e-沙尘暴";
             break;
         case 31:
-            str = @"晴";
+            str = @"_e-沙尘暴";
             break;
         case 32:
-            str = @"晴";
+            str = @"_e-霾";
             break;
         default:
-            str = @"icnHeavyRain";
             break;
     }
     
