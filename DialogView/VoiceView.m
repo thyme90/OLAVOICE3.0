@@ -26,9 +26,10 @@
 #import "FunctionModel.h"
 #import <iflyMSC/iflyMSC.h>
 
-#define APPID_VALUE           @"583bd19f"
+#define APPID_VALUE           @"583bd19f"//科大讯飞APPID
 
 @interface VoiceView()<ViaVoiceDelegate,DialogViewDelegate,CAAnimationDelegate,YSCVoiceWaveViewDeleagte>
+@property (nonatomic,strong) DialogView             *DlgView;
 @property (nonatomic,strong) ViaVoice               *viaVoiceSDK;//语音转文字的接口
 @property (nonatomic,strong) NSString               *ttsText;//tts播放的文本
 @property (nonatomic,strong) NSString               *ttsStr;//语音转换后的字符串
@@ -36,7 +37,8 @@
 @property (nonatomic,assign) BOOL                   isAnotherTopic;//如果不是新闻，百科和天气，就为true;
 @property (nonatomic,strong) TTSInterfaceAdapter    *ttsInterface;//语音播放的接口
 @property (nonatomic,strong) UIButton               *centerButton;//话筒
-@property (nonatomic,assign) int volPower;
+@property (nonatomic,assign) int                    volPower;//音量值
+@property (nonatomic,assign) BOOL                   isShow;//DialogView目前是否在显示，默认为true
 @end
 
 @implementation VoiceView
@@ -105,6 +107,7 @@
 
 
 -(void)buttonClick{
+    _isShow = NO;
     [self setButtonShadow:NO];
     
     [_ttsInterface stopSound];
@@ -125,7 +128,8 @@
     [_viaVoiceSDK setServer:@"http://api.olavoice.com:8000/olaweb/webvoice/api/ask?tts=1"];
     [_viaVoiceSDK setCUSID:OLAAPPID];
     _viaVoiceSDK.delegate = self;
-    }
+    _isShow = YES;
+}
 
 
 //################# VIAVOICE的代理的实现#####################################################
@@ -443,6 +447,24 @@
     [self.DlgView.tableView scrollToRowAtIndexPath:indexPath
                                   atScrollPosition:UITableViewScrollPositionTop
                                           animated:YES];
+}
+
+//如果显示主页，那么对话流页就进行隐藏
+-(void)DlgShow{
+    if (_isShow) {
+        [_ttsInterface stopSound];//停止播放语音
+        [UIView animateWithDuration:0.3 animations:^{
+            _DlgView.alpha = 0;
+        }];
+    }
+    
+    if(!_isShow){
+        [UIView animateWithDuration:0.3 animations:^{
+            _DlgView.alpha = 1;
+        }];
+    }
+    
+    _isShow = !_isShow;
 }
 
 @end

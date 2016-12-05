@@ -9,7 +9,7 @@
 #import "EnterPageViewController.h"
 #import "macro.h"
 @interface EnterPageViewController ()
-
+@property (nonatomic,strong) VoiceView  *voiceView;
 @end
 
 @implementation EnterPageViewController
@@ -21,8 +21,8 @@
     _mainContent.userInteractionEnabled = YES;
     _mainImageView.userInteractionEnabled = NO;
     
-    VoiceView *voiceView = [[VoiceView alloc]initWithFrame:CGRectMake(0, 64, _mainContent.frame.size.width, _mainContent.frame.size.height-64)];
-    [_mainContent addSubview:voiceView];
+    _voiceView = [[VoiceView alloc]initWithFrame:CGRectMake(0, 64, _mainContent.frame.size.width, _mainContent.frame.size.height-64)];
+    [_mainContent addSubview:_voiceView];
     
     _menuButton.selected = NO;
    
@@ -74,6 +74,7 @@
         }
     }];
     _mainImageView.userInteractionEnabled = YES;
+    [_voiceView DlgShow];
 }
 
 #pragma mark 三角形按钮
@@ -89,6 +90,8 @@
         }
     }];
     _mainImageView.userInteractionEnabled = NO;
+    [_voiceView DlgShow];
+    
 }
 
 #pragma mark 主页面 - 设置页功能
