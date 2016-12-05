@@ -105,39 +105,56 @@
 -(void)setModel:(NewsContentModel*)model{
     _model = model;
     _ttsLabel.text = model.ttsStr;
-    [_imgView sd_setImageWithURL:[NSURL URLWithString:model.image_url] placeholderImage:[UIImage imageNamed:@"icnPicGrey"] options:SDWebImageProgressiveDownload];
-    //去掉前后的空格和换行
-    _titleLabel.text = [model.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    _labelTime.text = [model.time stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    _labelSource.text = [model.source stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-
-    if (!model.buttonIsShow) {
-        [_showButton removeFromSuperview];
-        _contentLabel = [[UILabel alloc] init];
-        _contentLabel.font = [UIFont systemFontOfSize:15 weight:22.5];
-        _contentLabel.textColor = COLOR(255, 255, 255, 1);
-        _contentLabel.text = model.detail;
-        [_backView addSubview:_contentLabel];
+    
+    //如果内容不为空，则进行布局
+    if (!model.isNull) {
+        [_imgView sd_setImageWithURL:[NSURL URLWithString:model.image_url] placeholderImage:[UIImage imageNamed:@"icnPicGrey"] options:SDWebImageProgressiveDownload];
+        //去掉前后的空格和换行
+        _titleLabel.text = [model.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        _labelTime.text = [model.time stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        _labelSource.text = [model.source stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
-        [self setLayout];
+        if (!model.buttonIsShow) {
+            [_showButton removeFromSuperview];
+            _contentLabel = [[UILabel alloc] init];
+            _contentLabel.font = [UIFont systemFontOfSize:15 weight:22.5];
+            _contentLabel.textColor = COLOR(255, 255, 255, 1);
+            _contentLabel.text = model.detail;
+            [_backView addSubview:_contentLabel];
+            
+            [self setLayout];
+        }else{
+            [_contentLabel removeFromSuperview];
+            _showButton = [[UIButton alloc] init];
+            [_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateNormal];
+            //[_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateSelected];
+            UIImage *bgImage = [UIImage imageNamed:@"buttonbak"];
+            _showButton.backgroundColor = [UIColor colorWithPatternImage:bgImage];
+            _showButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            _showButton.imageView.contentMode = UIViewContentModeCenter;
+            
+            [self.backView addSubview:_showButton];
+            [_showButton addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+            
+            [self setShortLayout];
+        }
+
     }else{
-        [_contentLabel removeFromSuperview];
-        _showButton = [[UIButton alloc] init];
-        [_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateNormal];
-        //[_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateSelected];
-        UIImage *bgImage = [UIImage imageNamed:@"buttonbak"];
-        _showButton.backgroundColor = [UIColor colorWithPatternImage:bgImage];
-        _showButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        _showButton.imageView.contentMode = UIViewContentModeCenter;
-        
-        [self.backView addSubview:_showButton];
-        [_showButton addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-
-        [self setShortLayout];
+        [self setNullLayout];
     }
     
 }
 
+//没有内容的时候进行布局
+-(void)setNullLayout{
+    _ttsLabel.sd_layout
+    .leftSpaceToView(self.contentView,15.5)
+    .topSpaceToView(self.contentView,0)
+    .autoHeightRatio(0);
+    [_ttsLabel setSingleLineAutoResizeWithMaxWidth:self.contentView.frame.size.width];
+    [self setupAutoHeightWithBottomView:_ttsLabel bottomMargin:0];
+
+}
 
 
 -(void)setLayout{
