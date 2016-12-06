@@ -200,7 +200,7 @@
 
 -(void)setAllLayout{
     _ttsLabel.sd_layout
-    .leftSpaceToView(self.contentView,15)
+    .leftSpaceToView(self.contentView,15*nKwidth)
     .topSpaceToView(self.contentView,0)
     .rightSpaceToView(self.contentView,0)
     .autoHeightRatio(0);
@@ -255,7 +255,7 @@
         
         
         [_backView setupAutoHeightWithBottomView:_lastBottomLine bottomMargin:1];
-        [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
+        [self setupAutoHeightWithBottomView:_backView bottomMargin:5*nKheight];
     }else{
         [self setupAutoHeightWithBottomView:_ttsLabel bottomMargin:0];
     }
@@ -269,7 +269,7 @@
     .rightSpaceToView(self.contentView,0)
     .autoHeightRatio(0);
     
-    if (_textView.text.length > 100) {
+    if (_model.descr.length > 100) {
         _textView.text = [_model.descr substringWithRange:NSMakeRange(0, 100)];
     }else{
         _textView.text = _model.descr;
@@ -306,10 +306,9 @@
     .leftSpaceToView(self.contentView,0)
     .topSpaceToView(_ttsLabel,12)
     .rightSpaceToView(self.contentView,0);
-
-    
+   
     [_backView setupAutoHeightWithBottomView:_showButton bottomMargin:0];
-    [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
+    [self setupAutoHeightWithBottomView:_backView bottomMargin:5*nKheight];
 }
 
 //生成间隔线
