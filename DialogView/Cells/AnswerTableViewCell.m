@@ -7,7 +7,9 @@
 //
 
 #import "AnswerTableViewCell.h"
-#import "commonHeader.h"
+#import "SDAutoLayout.h"
+#import "macro.h"
+ 
 
 
 @interface AnswerTableViewCell()<CAAnimationDelegate>

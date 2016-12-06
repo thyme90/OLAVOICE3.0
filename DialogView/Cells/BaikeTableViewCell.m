@@ -7,7 +7,7 @@
 //
 
 #import "BaikeTableViewCell.h"
-#import "commonHeader.h"
+ 
 
 @interface itemLabel()<UITextViewDelegate>
 @property (nonatomic,strong) UILabel    *leftLabel;
@@ -184,8 +184,8 @@
 
         
         _showButton = [[UIButton alloc] init];
-        [_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateNormal];
-        [_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateSelected];
+        [_showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateNormal];
+        [_showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateSelected];
         UIImage *bgImage = [UIImage imageNamed:@"buttonbak"];
         _showButton.backgroundColor = [UIColor colorWithPatternImage:bgImage];
 
@@ -200,7 +200,7 @@
 
 -(void)setAllLayout{
     _ttsLabel.sd_layout
-    .leftSpaceToView(self.contentView,15)
+    .leftSpaceToView(self.contentView,15*nKwidth)
     .topSpaceToView(self.contentView,0)
     .rightSpaceToView(self.contentView,0)
     .autoHeightRatio(0);
@@ -255,7 +255,7 @@
         
         
         [_backView setupAutoHeightWithBottomView:_lastBottomLine bottomMargin:1];
-        [self setupAutoHeightWithBottomView:_backView bottomMargin:50];
+        [self setupAutoHeightWithBottomView:_backView bottomMargin:5*nKheight];
     }else{
         [self setupAutoHeightWithBottomView:_ttsLabel bottomMargin:0];
     }
@@ -269,7 +269,12 @@
     .rightSpaceToView(self.contentView,0)
     .autoHeightRatio(0);
     
-    _textView.text = [_model.descr substringWithRange:NSMakeRange(0, 100)];
+    if (_model.descr.length > 100) {
+        _textView.text = [_model.descr substringWithRange:NSMakeRange(0, 100)];
+    }else{
+        _textView.text = _model.descr;
+    }
+    
     float textHeight = [self heightForString:_textView andWidth:self.contentView.frame.size.width];
     //字符的高度最小为90
     if (textHeight < 100) {
@@ -301,10 +306,9 @@
     .leftSpaceToView(self.contentView,0)
     .topSpaceToView(_ttsLabel,12)
     .rightSpaceToView(self.contentView,0);
-
-    
+   
     [_backView setupAutoHeightWithBottomView:_showButton bottomMargin:0];
-    [self setupAutoHeightWithBottomView:_backView bottomMargin:50];
+    [self setupAutoHeightWithBottomView:_backView bottomMargin:5*nKheight];
 }
 
 //生成间隔线

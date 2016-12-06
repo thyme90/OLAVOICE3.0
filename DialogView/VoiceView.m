@@ -114,10 +114,9 @@
     [_viaVoiceSDK reset];
     [_viaVoiceSDK start:MicInputSource];
     
-    //创建一个消息对象
-    NSNotification * notice = [NSNotification notificationWithName:@"voiceClick" object:nil userInfo:nil];
+   
     //发送消息
-    [[NSNotificationCenter defaultCenter] postNotification:notice];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"voiceClick" object:nil userInfo:nil]];
 }
 
 #pragma mark --初始化信息
@@ -168,6 +167,7 @@
 -(void)OnSemanticResult:(NSData *)semanticResult{
     //NSSLog(@"enter OnSemanticResult");
     //间隔0.5秒删除Button发光的动画
+    _centerButton.userInteractionEnabled = YES;
     [self performSelector:@selector(removeButtonAnimation) withObject:nil afterDelay:0.5];
     
     NSError *err;
@@ -268,6 +268,7 @@
 
 -(void)onBeginOfSpeech{
     [self waterUpAnimation];//水波纹开始上
+    _centerButton.userInteractionEnabled = NO;
 }
 
 -(void)onEndOfSpeech{
@@ -288,9 +289,12 @@
     return nil;
 }
 
+//连接服务器超时
 -(void)connectServerError:(NSError *)connectionError{
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"connectServerError" object:nil userInfo:nil]];
     NSLog(@"connect sever error is %@",connectionError.localizedDescription);
     [self removeButtonAnimation];
+    _centerButton.userInteractionEnabled = YES;
 }
 
 -(void)onPowerChanged:(int)volume{

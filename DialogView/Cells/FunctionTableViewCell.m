@@ -7,7 +7,7 @@
 //
 
 #import "FunctionTableViewCell.h"
-#import "commonHeader.h"
+ 
 
 @implementation FunctionItemView
 -(id)init{
@@ -290,13 +290,13 @@
     .rightSpaceToView(self.contentView,0);
 
     [_backView setupAutoHeightWithBottomView:_lastBottomLine bottomMargin:0];
-    [self setupAutoHeightWithBottomView:_backView bottomMargin:0];
+    [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
 }
 
 -(void)setShortShow{
     UIButton *showButton = [[UIButton alloc] init];
-    [showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateNormal];
-    [showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateSelected];
+    [showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateNormal];
+    [showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateSelected];
     UIImage *bgImage = [UIImage imageNamed:@"buttonbak"];
     showButton.backgroundColor = [UIColor colorWithPatternImage:bgImage];
     showButton.imageView.contentMode = UIViewContentModeCenter;
@@ -335,7 +335,7 @@
     
     [_backView setupAutoHeightWithBottomView:showButton bottomMargin:0];
     
-    [self setupAutoHeightWithBottomView:_backView bottomMargin:1];
+    [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
 }
 
 
@@ -416,10 +416,6 @@
 
 //点击完成按钮是发出的消息
 -(void)finishButtonClick{
-    _finishButton.hidden = !_finishButton.hidden;
-    _titleLabel.hidden = !_titleLabel.hidden;
-    [self hideAniamtion];
-    
     //查询有那几个选项被选中了。
     NSMutableArray *arry = [[NSMutableArray alloc] init];
     for (int i=0; i<_arryItem.count; i++) {
@@ -430,18 +426,18 @@
         }
     }
     
-    //最多显示6个
-    if (arry.count > 6) {
-        
-    }else{
-        //创建一个消息对象
-        NSNotification * notice = [NSNotification notificationWithName:@"functioneditbuttonclick" object:arry userInfo:nil];
-        //发送消息
-        [[NSNotificationCenter defaultCenter] postNotification:notice];
+    //如果选择的数目小于6 则不进行隐藏。
+    if (arry.count < 6) {
+        _finishButton.hidden = !_finishButton.hidden;
+        _titleLabel.hidden = !_titleLabel.hidden;
+        [self hideAniamtion];
     }
     
-
-
+    //创建一个消息对象
+    NSNotification * notice = [NSNotification notificationWithName:@"functioneditbuttonclick" object:arry userInfo:nil];
+    //发送消息
+    [[NSNotificationCenter defaultCenter] postNotification:notice];
+    
 }
 
 

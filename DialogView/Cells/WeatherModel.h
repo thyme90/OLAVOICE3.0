@@ -28,6 +28,5 @@
 @interface WeatherModel : CellModel
 -(id)initWithData:(NSDictionary *)dic;
 @property (nonatomic,strong) NSMutableArray         *weatherDataArry;
-@property (nonatomic,strong) NSString               *modelType;
 @property (nonatomic,strong) NSString               *cityStr;//当前的城市
 @end

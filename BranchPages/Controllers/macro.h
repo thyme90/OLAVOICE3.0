@@ -69,6 +69,7 @@ static BOOL leftSliderOpenOrNot = NO;//控制中心侧边栏是否打开
 #import "NetworkAction.h" //  發送命令
 #import "HttpConnect.h"
 #import "UserManager.h"//  獲取信息
+#import "NSString+Extension.h"//nsstring的扩展类
 //====================================
 // ------------------------------------------------------ macro  宏
 #define COLOR(R,G,B,A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
@@ -78,6 +79,14 @@ static BOOL leftSliderOpenOrNot = NO;//控制中心侧边栏是否打开
 #define mKheight [UIScreen mainScreen].bounds.size.height/568
 #define nKwidth [UIScreen mainScreen].bounds.size.width/375
 #define nKheight [UIScreen mainScreen].bounds.size.height/667
+
+#define OLAAPPID   @"0B647B01-1BAF-4EE2-8165-239752A3B76F"
+#define OLACUSID   @"73D424AD-A85D-8163-52BB-F7515BFC3CBF"
+
+#define NSSLog(FORMAT, ...)  fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] \
+UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String])
+
+
 
 #define TIMEOUTINTERVAL 5.0f //定义和服务器端通信的超时时间
 

@@ -33,6 +33,7 @@
  
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(voiceButtonClickAction:) name:@"voiceClick" object:nil];
     //[[NSNotificationCenter defaultCenter]postNotificationName:@"voiceClick" object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(connServerError) name:@"connectServerError" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -90,6 +91,7 @@
         }
     }];
     _mainImageView.userInteractionEnabled = NO;
+    //对话流页面消失
     [_voiceView DlgShow];
     
 }
@@ -144,6 +146,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)connServerError{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"连接服务器超时，请稍后再试！" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    //显示3秒消失
+    dispatch_time_t delayTime3 = dispatch_time(DISPATCH_TIME_NOW, 3*NSEC_PER_SEC);
+    [self presentViewController:alertController animated:YES completion:^{
+        dispatch_queue_t mainQueue = dispatch_get_main_queue();
+        
+        dispatch_after(delayTime3, mainQueue, ^{
+            [alertController dismissViewControllerAnimated:YES completion:nil];
+        });
+    }];
+
 }
 
 @end
