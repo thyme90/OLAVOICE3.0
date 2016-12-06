@@ -167,6 +167,7 @@
 -(void)OnSemanticResult:(NSData *)semanticResult{
     //NSSLog(@"enter OnSemanticResult");
     //间隔0.5秒删除Button发光的动画
+    _centerButton.userInteractionEnabled = YES;
     [self performSelector:@selector(removeButtonAnimation) withObject:nil afterDelay:0.5];
     
     NSError *err;
@@ -267,6 +268,7 @@
 
 -(void)onBeginOfSpeech{
     [self waterUpAnimation];//水波纹开始上
+    _centerButton.userInteractionEnabled = NO;
 }
 
 -(void)onEndOfSpeech{
@@ -292,6 +294,7 @@
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"connectServerError" object:nil userInfo:nil]];
     NSLog(@"connect sever error is %@",connectionError.localizedDescription);
     [self removeButtonAnimation];
+    _centerButton.userInteractionEnabled = YES;
 }
 
 -(void)onPowerChanged:(int)volume{

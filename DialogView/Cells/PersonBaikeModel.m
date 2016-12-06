@@ -7,12 +7,7 @@
 //
 
 #import "PersonBaikeModel.h"
-#import "commonHeader.h"
-
 @implementation PersonBaikeData
-
-
-
 @end
 
 

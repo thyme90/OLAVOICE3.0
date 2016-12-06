@@ -8,7 +8,7 @@
 
 #import "EditTableViewCell.h"
 #import "SDAutoLayout.h"
-#import "commonHeader.h"
+#import "macro.h"
 
 @interface EditTableViewCell()<UITextViewDelegate>
 @property (nonatomic,strong) UILabel    *label;

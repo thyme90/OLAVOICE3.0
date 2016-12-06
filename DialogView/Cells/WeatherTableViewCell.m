@@ -7,8 +7,10 @@
 //
 
 #import "WeatherTableViewCell.h"
-#import "SDAutoLayout.h"
-#import "commonHeader.h"
+ 
+
+#define KW [UIScreen mainScreen].bounds.size.width/375
+#define KH [UIScreen mainScreen].bounds.size.height/667
 
 #define LABELMAXWIDTH    200  //label的最大宽度
 
@@ -69,40 +71,42 @@
 }
 
 -(void)setLayout{
+    
     _weekday.sd_layout
     .leftSpaceToView(self,0)
-    .topSpaceToView(self,13)
+    .topSpaceToView(self,12.5*KH)
     .rightSpaceToView(self,0)
     .autoHeightRatio(0);
     
     
+    
     _iconImg.sd_layout
-    .leftSpaceToView(self,30.7)
-    .topSpaceToView(_weekday,5)
-    .widthIs(30)
-    .heightIs(25);
+    .leftSpaceToView(self,30.7*KW)
+    .topSpaceToView(_weekday,5*KH)
+    .widthIs(30*KW)
+    .heightIs(25*KH);
     
     _temperature_high_low.sd_layout
     .leftSpaceToView(self,0)
-    .topSpaceToView(_iconImg,8)
+    .topSpaceToView(_iconImg,5*KH)
     .rightSpaceToView(self,0)
     .autoHeightRatio(0);
     
     _tempIcon.sd_layout
-    .leftSpaceToView(self,67)
+    .leftSpaceToView(self,67*KW)
     .topEqualToView(_temperature_high_low)
-    .widthIs(5)
-    .heightIs(5);
+    .widthIs(6)
+    .heightIs(6);
     
     
     _descr.sd_layout
     .leftSpaceToView(self,0)
-    .topSpaceToView(_temperature_high_low,7)
+    .topSpaceToView(_temperature_high_low,5*KH)
     .rightSpaceToView(self,0)
     .autoHeightRatio(0);
     
     
-    [self setupAutoHeightWithBottomView:_descr bottomMargin:3];
+    [self setupAutoHeightWithBottomView:_descr bottomMargin:0];
 }
 
 -(void)setWeatherData:(WeatherData *)data{
@@ -297,41 +301,40 @@
 
 -(void)setLayout{
     _ttsLabel.sd_layout
-    .leftSpaceToView(self.contentView,15)
+    .leftSpaceToView(self.contentView,15*KW)
     .topSpaceToView(self.contentView,0)
-    .rightSpaceToView(self.contentView,15)
+    .rightSpaceToView(self.contentView,15*KW)
     .autoHeightRatio(0);
          
     _backView.sd_layout
     .leftSpaceToView(self.contentView,0)
-    .topSpaceToView(_ttsLabel,12)
-    .rightSpaceToView(self.contentView,0)
-    .heightIs(300);
+    .topSpaceToView(_ttsLabel,12*KW)
+    .rightSpaceToView(self.contentView,0);
     
     //如果is_today为0说明询问的是当天的天气，否则不是。
     if (_curWeatherData.is_today == 0) {
         _current_temp.sd_layout
-        .leftSpaceToView(_backView,43)
-        .topSpaceToView(_backView,51)
+        .leftSpaceToView(_backView,43*KW)
+        .topSpaceToView(_backView,51*KH)
         .autoHeightRatio(0);
         [_current_temp setSingleLineAutoResizeWithMaxWidth:LABELMAXWIDTH];
         
         _weatherIcon0.sd_layout
-        .leftSpaceToView(_current_temp,10)
-        .topSpaceToView(_backView,50)
+        .leftSpaceToView(_current_temp,10*KW)
+        .topSpaceToView(_backView,50*KH)
         .widthIs(20)
         .heightIs(20);
         
         _pm25.sd_layout
         .leftEqualToView(_current_temp)
-        .topSpaceToView(_current_temp,12)
+        .topSpaceToView(_current_temp,5*KH)
         .autoHeightRatio(0);
         [_pm25 setSingleLineAutoResizeWithMaxWidth:200];
         
         _temperature_high_low.sd_layout
-        .leftSpaceToView(_backView,225)
-        .topSpaceToView(_backView,60)
-        .heightIs(18);
+        .leftSpaceToView(_backView,225*KW)
+        .topSpaceToView(_backView,60*KH)
+        .heightIs(18*KH);
         [_temperature_high_low setSingleLineAutoResizeWithMaxWidth:LABELMAXWIDTH];
         _temperature_high_low.font = [UIFont systemFontOfSize:21];
         
@@ -339,16 +342,16 @@
         _weatherIcon1.backgroundColor = [UIColor colorWithPatternImage:bgImage];
         _weatherIcon1.sd_layout
         .leftSpaceToView(_temperature_high_low,0)
-        .topSpaceToView(_backView,54.5)
+        .topSpaceToView(_backView,54.5*KH)
         .widthIs(7)
         .heightIs(7);
 
         
     }else{
         _temperature_high_low.sd_layout
-        .leftSpaceToView(_backView,25)
-        .topSpaceToView(_backView,56)
-        .heightIs(43);
+        .leftSpaceToView(_backView,43*KW)
+        .topSpaceToView(_backView,56*KH)
+        .heightIs(43*KH);
         [_temperature_high_low setSingleLineAutoResizeWithMaxWidth:LABELMAXWIDTH];
 
         _temperature_high_low.font = [UIFont systemFontOfSize:50];
@@ -357,28 +360,28 @@
         _weatherIcon1.backgroundColor = [UIColor colorWithPatternImage:bgImage];
         _weatherIcon1.sd_layout
         .leftSpaceToView(_temperature_high_low,0)
-        .topSpaceToView(_backView,54.5)
+        .topSpaceToView(_backView,54.5*KH)
         .widthIs(7)
         .heightIs(7);
 
     }
     
     _todayIcon.sd_layout
-    .leftSpaceToView(_backView,318)
-    .topSpaceToView(_backView,54)
-    .widthIs(32)
-    .heightIs(30);
+    .leftSpaceToView(_backView,318*KW)
+    .topSpaceToView(_backView,54*KH)
+    .widthIs(32*KW)
+    .heightIs(30*KH);
     
     _desc.sd_layout
-    .leftSpaceToView(_backView,256)
-    .topSpaceToView(_backView,92)
-    .heightIs(16);
+    .leftSpaceToView(_backView,256*KW)
+    .topSpaceToView(_backView,92*KH)
+    .heightIs(16*KH);
     [_desc setSingleLineAutoResizeWithMaxWidth:100];
     
     _currentDay.sd_layout
-    .leftSpaceToView(_backView,250.5)
-    .topSpaceToView(_desc,4)
-    .heightIs(12);
+    .leftSpaceToView(_backView,250.5*KW)
+    .topSpaceToView(_desc,4*KH)
+    .heightIs(12*KH);
     [_currentDay setSingleLineAutoResizeWithMaxWidth:100];
     
     
@@ -386,21 +389,21 @@
     //横线，开始布局四天的天气
     _horizLine.sd_layout
     .leftSpaceToView(_backView,0)
-    .topSpaceToView(_currentDay,63.5)
+    .topSpaceToView(_currentDay,68.5*KH)
     .rightSpaceToView(_backView,0)
-    .heightIs(1);
+    .heightIs(1*KH);
     
     
     _itemView1.sd_layout
     .leftSpaceToView(_backView,0)
-    .topSpaceToView(_horizLine,12.5)
-    .bottomSpaceToView(_backView,12.5)
-    .rightSpaceToView(_backView,282);
+    .topSpaceToView(_horizLine,0)
+    .rightSpaceToView(_backView,282*KW)
+    .heightIs(116.5*KH);
     
     _VertexLine = [self addSeparatorLineRightView:_itemView1];
     
     _itemView2.sd_layout
-    .leftSpaceToView(_itemView1,1)
+    .leftSpaceToView(_itemView1,1*KW)
     .topEqualToView(_itemView1)
     .bottomEqualToView(_itemView1)
     .widthRatioToView(_itemView1,1);
@@ -409,7 +412,7 @@
 
     
     _itemView3.sd_layout
-    .leftSpaceToView(_itemView2,1)
+    .leftSpaceToView(_itemView2,1*KW)
     .topEqualToView(_itemView1)
     .bottomEqualToView(_itemView1)
     .widthRatioToView(_itemView1,1);
@@ -417,11 +420,12 @@
     _VertexLine = [self addSeparatorLineRightView:_itemView3];
 
     _itemView4.sd_layout
-    .leftSpaceToView(_itemView3,2)
+    .leftSpaceToView(_itemView3,1*KW)
     .topEqualToView(_itemView1)
     .bottomEqualToView(_itemView1)
     .widthRatioToView(_itemView1,1);
     
+    [_backView setupAutoHeightWithBottomView:_itemView1 bottomMargin:10];
     [self setupAutoHeightWithBottomView:_backView bottomMargin:1];
     
 }
@@ -430,15 +434,14 @@
 - (UIView *)addSeparatorLineRightView:(UIView *)view
 {
     UIView *line = [UIView new];
-    //line.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dividerVertical"]];
     line.backgroundColor = [UIColor whiteColor];
     [self.backView addSubview:line];
     
     line.sd_layout
     .leftSpaceToView(view, 0)
-    .topSpaceToView(_horizLine, 12.5)
-    .bottomSpaceToView(_backView,12.5)
-    .widthIs(1);
+    .topSpaceToView(_horizLine, 12.5*KH)
+    .widthIs(1)
+    .heightIs(87*KH);
     
     
     return line;

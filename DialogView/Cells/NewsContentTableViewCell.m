@@ -7,7 +7,7 @@
 //
 
 #import "NewsContentTableViewCell.h"
-#import "commonHeader.h"
+ 
 
 
 @interface NewsContentTableViewCell()
@@ -126,8 +126,8 @@
         }else{
             [_contentLabel removeFromSuperview];
             _showButton = [[UIButton alloc] init];
-            [_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateNormal];
-            //[_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateSelected];
+            [_showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateNormal];
+            [_showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateSelected];
             UIImage *bgImage = [UIImage imageNamed:@"buttonbak"];
             _showButton.backgroundColor = [UIColor colorWithPatternImage:bgImage];
             _showButton.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -220,8 +220,7 @@
     .autoHeightRatio(0);
     
     [_backView setupAutoHeightWithBottomView:_contentLabel bottomMargin:0];
-    //[_scrollView setupAutoHeightWithBottomView:_backView bottomMargin:1];
-    [self setupAutoHeightWithBottomView:_backView bottomMargin:0];
+    [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
     
 }
 
@@ -285,7 +284,7 @@
     
     
     [_backView setupAutoHeightWithBottomView:_showButton bottomMargin:0];
-    [self setupAutoHeightWithBottomView:_backView bottomMargin:0];
+    [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
 
 }
 
