@@ -114,10 +114,9 @@
     [_viaVoiceSDK reset];
     [_viaVoiceSDK start:MicInputSource];
     
-    //创建一个消息对象
-    NSNotification * notice = [NSNotification notificationWithName:@"voiceClick" object:nil userInfo:nil];
+   
     //发送消息
-    [[NSNotificationCenter defaultCenter] postNotification:notice];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"voiceClick" object:nil userInfo:nil]];
 }
 
 #pragma mark --初始化信息
@@ -288,7 +287,9 @@
     return nil;
 }
 
+//连接服务器超时
 -(void)connectServerError:(NSError *)connectionError{
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"connectServerError" object:nil userInfo:nil]];
     NSLog(@"connect sever error is %@",connectionError.localizedDescription);
     [self removeButtonAnimation];
 }

@@ -255,7 +255,7 @@
         
         
         [_backView setupAutoHeightWithBottomView:_lastBottomLine bottomMargin:1];
-        [self setupAutoHeightWithBottomView:_backView bottomMargin:50];
+        [self setupAutoHeightWithBottomView:_backView bottomMargin:0];
     }else{
         [self setupAutoHeightWithBottomView:_ttsLabel bottomMargin:0];
     }
@@ -304,7 +304,7 @@
 
     
     [_backView setupAutoHeightWithBottomView:_showButton bottomMargin:0];
-    [self setupAutoHeightWithBottomView:_backView bottomMargin:50];
+    [self setupAutoHeightWithBottomView:_backView bottomMargin:0];
 }
 
 //生成间隔线
