@@ -8,7 +8,7 @@
 
 #import "QuestionTableViewCell.h"
 #import "SDAutoLayout.h"
-#import "commonHeader.h"
+#import "macro.h"
 
 
 @interface QuestionTableViewCell()

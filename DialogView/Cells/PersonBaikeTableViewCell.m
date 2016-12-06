@@ -7,7 +7,7 @@
 //
 
 #import "PersonBaikeTableViewCell.h"
-#import "commonHeader.h"
+ 
 
 @interface PersonBaikeItemView()
 @property (nonatomic,strong) UILabel        *numLabel;

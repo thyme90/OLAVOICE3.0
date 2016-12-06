@@ -7,7 +7,7 @@
 //
 
 #import "BaikeTableViewCell.h"
-#import "commonHeader.h"
+ 
 
 @interface itemLabel()<UITextViewDelegate>
 @property (nonatomic,strong) UILabel    *leftLabel;

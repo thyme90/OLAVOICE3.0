@@ -7,7 +7,7 @@
 //
 
 #import "NewsContentTableViewCell.h"
-#import "commonHeader.h"
+ 
 
 
 @interface NewsContentTableViewCell()

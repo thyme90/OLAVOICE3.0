@@ -7,7 +7,7 @@
 //
 
 #import "NewsTableViewCell.h"
-#import "commonHeader.h"
+ 
  
 @interface NewsTitleView()
 @property (nonatomic,strong) UIImageView        *imageView;

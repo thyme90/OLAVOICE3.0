@@ -7,7 +7,6 @@
 //
 
 #import "SelectionBaikeTableViewCell.h"
-#import "commonHeader.h"
 
 @interface itemView()
 @property (nonatomic,strong) UILabel        *numLabel;

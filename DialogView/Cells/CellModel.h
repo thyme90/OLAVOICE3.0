@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SDAutoLayout.h"
+#import "macro.h"
 
 @interface CellModel : NSObject
 @property (nonatomic,strong) NSString       *modelType;//cellModel的类型

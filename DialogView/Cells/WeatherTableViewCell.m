@@ -7,8 +7,7 @@
 //
 
 #import "WeatherTableViewCell.h"
-#import "SDAutoLayout.h"
-#import "commonHeader.h"
+ 
 
 #define KW [UIScreen mainScreen].bounds.size.width/375
 #define KH [UIScreen mainScreen].bounds.size.height/667

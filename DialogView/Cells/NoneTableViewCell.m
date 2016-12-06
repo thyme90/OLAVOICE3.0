@@ -7,7 +7,7 @@
 //
 
 #import "NoneTableViewCell.h"
-#import "commonHeader.h"
+ 
 
 
 @interface NoneTableViewCell()

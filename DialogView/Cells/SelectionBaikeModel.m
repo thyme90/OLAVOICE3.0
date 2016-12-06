@@ -8,12 +8,8 @@
 
 #import "SelectionBaikeModel.h"
 
-#import "commonHeader.h"
 
 @implementation SelectionBaikeData
-
-
-
 @end
 
 
