@@ -139,7 +139,7 @@
     //内容
     _backView = [[UIView alloc] init];
     _backView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"透明白背板"]];
-    //_backView.backgroundColor = [UIColor blueColor];
+    _backView.backgroundColor = [UIColor blueColor];
     [self.contentView addSubview:_backView];
 }
 
