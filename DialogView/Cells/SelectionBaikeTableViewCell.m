@@ -156,8 +156,8 @@
         [_backView addSubview:_shortTitleView];
         
         _showButton = [[UIButton alloc] init];
-        [_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateNormal];
-        //[_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateSelected];
+        [_showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateNormal];
+        [_showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateSelected];
         UIImage *bgImage = [UIImage imageNamed:@"buttonbak"];
         _showButton.backgroundColor = [UIColor colorWithPatternImage:bgImage];
         _showButton.imageView.contentMode = UIViewContentModeCenter;
@@ -205,7 +205,7 @@
     
     
     [_backView setupAutoHeightWithBottomView:_lastBottomLine bottomMargin:0];
-    [self setupAutoHeightWithBottomView:_backView bottomMargin:0];
+    [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
     
     
 }
@@ -237,7 +237,7 @@
     
     
     [_backView setupAutoHeightWithBottomView:_shortTitleView bottomMargin:0];
-    [self setupAutoHeightWithBottomView:_backView bottomMargin:0];
+    [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
 
 }
 

@@ -184,8 +184,8 @@
 
         
         _showButton = [[UIButton alloc] init];
-        [_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateNormal];
-        [_showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateSelected];
+        [_showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateNormal];
+        [_showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateSelected];
         UIImage *bgImage = [UIImage imageNamed:@"buttonbak"];
         _showButton.backgroundColor = [UIColor colorWithPatternImage:bgImage];
 
@@ -255,7 +255,7 @@
         
         
         [_backView setupAutoHeightWithBottomView:_lastBottomLine bottomMargin:1];
-        [self setupAutoHeightWithBottomView:_backView bottomMargin:0];
+        [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
     }else{
         [self setupAutoHeightWithBottomView:_ttsLabel bottomMargin:0];
     }
@@ -269,7 +269,12 @@
     .rightSpaceToView(self.contentView,0)
     .autoHeightRatio(0);
     
-    _textView.text = [_model.descr substringWithRange:NSMakeRange(0, 100)];
+    if (_textView.text.length > 100) {
+        _textView.text = [_model.descr substringWithRange:NSMakeRange(0, 100)];
+    }else{
+        _textView.text = _model.descr;
+    }
+    
     float textHeight = [self heightForString:_textView andWidth:self.contentView.frame.size.width];
     //字符的高度最小为90
     if (textHeight < 100) {
@@ -304,7 +309,7 @@
 
     
     [_backView setupAutoHeightWithBottomView:_showButton bottomMargin:0];
-    [self setupAutoHeightWithBottomView:_backView bottomMargin:0];
+    [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
 }
 
 //生成间隔线

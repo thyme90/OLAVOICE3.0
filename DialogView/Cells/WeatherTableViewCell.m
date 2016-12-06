@@ -430,7 +430,6 @@
 - (UIView *)addSeparatorLineRightView:(UIView *)view
 {
     UIView *line = [UIView new];
-    //line.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dividerVertical"]];
     line.backgroundColor = [UIColor whiteColor];
     [self.backView addSubview:line];
     

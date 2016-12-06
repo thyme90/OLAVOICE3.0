@@ -152,15 +152,15 @@
     
     
     [_backView setupAutoHeightWithBottomView:label5 bottomMargin:150];
-
+     [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
 
 }
 
 
 -(void)setShortShow{
     UIButton *showButton = [[UIButton alloc] init];
-    [showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateNormal];
-    [showButton setImage:[UIImage imageNamed:@"icnRightArrow"] forState:UIControlStateSelected];
+    [showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateNormal];
+    [showButton setImage:[UIImage imageNamed:@"icnDownArrow"] forState:UIControlStateSelected];
     UIImage *bgImage = [UIImage imageNamed:@"buttonbak"];
     showButton.backgroundColor = [UIColor colorWithPatternImage:bgImage];
     showButton.imageView.contentMode = UIViewContentModeCenter;
@@ -180,7 +180,7 @@
     .rightSpaceToView(self.contentView,0);
     
     [_backView setupAutoHeightWithBottomView:showButton bottomMargin:0];
-    
+     [self setupAutoHeightWithBottomView:_backView bottomMargin:5];
     
 
 }

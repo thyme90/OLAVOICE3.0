@@ -109,11 +109,8 @@ static NSString   *NoneCellId                   =  @"NoneTableViewCellId";//提�
     //获得当前话筒点击事件的消息
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"voiceClick" object:nil];
     
-    
+    //获取更多功能页点击的消息
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveFunctionCellMessage:) name:@"functionshowbuttonclick" object:nil];
-    
-    
-
     
     _isCreateEditCell = NO;
 }
@@ -468,10 +465,7 @@ static NSString   *NoneCellId                   =  @"NoneTableViewCellId";//提�
         [_tableView scrollToRowAtIndexPath:indexPath
                                       atScrollPosition:UITableViewScrollPositionTop
                                               animated:YES];
-        
-        
-        
-    } 
+        } 
 }
 
 
