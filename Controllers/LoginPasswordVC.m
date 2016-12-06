@@ -37,15 +37,7 @@
     
 }
 
-#pragma mark - Navigation
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"toVerifyPage"]) {
-        VerifyVC *verifyVC = [segue destinationViewController];
-        verifyVC.account = self.account;
-        verifyVC.accountType = self.accountType;
-    }
-}
+
 
 -(SeverStatus )verifyPassword{
     NSString* md5 = [[CommonHeadFile getCommonHeadFileInstance] md5HexDigest:_passwordTextField.text];//对明文密码进行加密
@@ -101,6 +93,16 @@
         }else{
             return NETWORKTIMEOUT;
         }
+    }
+}
+
+#pragma mark - Navigation
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toVerifyPage"]) {
+        VerifyVC *verifyVC = [segue destinationViewController];
+        verifyVC.account = self.account;
+        verifyVC.accountType = self.accountType;
     }
 }
 

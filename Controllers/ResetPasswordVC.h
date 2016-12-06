@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ResetPasswordVC : UIViewController
-
-
 @property (weak, nonatomic) IBOutlet UILabel *remindAccountLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmTextField;

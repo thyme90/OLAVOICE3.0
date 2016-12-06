@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface FinishChangePhoneVC : UIViewController
-
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
+@property (weak, nonatomic) IBOutlet UILabel *remindReasonLabel;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UITextField *verificationCodeTextField;
+@property (strong, nonatomic) NSString *oldPhoneNumber;
+@property (strong, nonatomic) NSString *newPhoneNumber;
 @end

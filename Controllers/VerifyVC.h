@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *verificationCodeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *sendVerificationButton;
 
-
 @property (strong, nonatomic) NSString *account;
 @property (assign, nonatomic)  AccountType accountType;
 @end

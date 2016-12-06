@@ -25,99 +25,47 @@
     [self dismissViewControllerAnimated:YES completion:^{    }];
 }
 
-#pragma mark 下一步输入密码或验证码
+#pragma mark 下一步进入输入密码页或验证码页
 - (IBAction)nextStepButtonAction:(UIButton *)sender {
-    _accountType = [self verifyAccountTextContent];
-    [UserManager getUserManagerInstance].accountType = _accountType;
-    /*
-    switch (_accountType) {
-        case <#constant#>:
-            <#statements#>
-            break;
-            
-        default:
-            break;
-    }
-     */
- ///////////////////////////////////////////////////////////////////////////
-//// 验证网络状态和账号对错
-    NetworkStatus enabelWifi = [[CommonHeadFile getCommonHeadFileInstance] getNetWorkStates];
-    //判断没有WiFi或者不是WiFi就打开WiFi的设置界面
-    if(enabelWifi != ReachableViaWiFi){
-        NSString *message = @"您的手机没有处在WIFI网络中";
-        NSString *settingButton = @"设置";
-        NSString *cancelButton = @"取消";
-        UIAlertController *alertDialog = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *settingAction = [UIAlertAction actionWithTitle:settingButton style:UIAlertActionStyleDefault handler:^(UIAlertAction* action){
-            
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButton style:UIAlertActionStyleDefault handler:^(UIAlertAction* action){
-            
-        }];
-        [alertDialog addAction:cancelAction];
-        [alertDialog addAction:settingAction];
-        
-        [self presentViewController:alertDialog animated:YES completion:nil];
+    if (_accountTextField.text.length>0) {
+        BOOL isLinking = [self checkCurrentNetworkState];
+        if (isLinking) {
+            _accountType = [self verifyAccountTextContent];
+            [UserManager getUserManagerInstance].accountType = _accountType;
+            switch (_accountType) {
+                case PHONENUMSUCCESS:
+                    [self performSegueWithIdentifier:@"toReceiveVerifyCodePage" sender:self];
+                    break;
+                case MAILBOXSUCCESS:
+                case OLASUCCESS:
+                    [self performSegueWithIdentifier:@"toInputPasswordPage" sender:self];
+                    break;
+                case PHONENUMERROR:
+                    _remindLabel.text = @"您输入的手机号有误";
+                    break;
+                case MAILBOXREGISTER:
+                    _remindLabel.text = @"您输入的邮箱号有误";
+                    break;
+                case OLAERROR:
+                    _remindLabel.text = @"您输入的OLA账号有误";
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
     }else{
-        UIAlertController *alertDialog = [UIAlertController alertControllerWithTitle:nil message:@"      正在验证用户" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIActivityIndicatorView *activeView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        
-        activeView.frame = CGRectMake(50,25,10,10);
-        [activeView startAnimating];
-        [alertDialog.view addSubview:activeView];
-    }
- ///////////////////////////////////////////////////////////////////////////
-    if (_accountType != PHONENUMBER) {
-        [self performSegueWithIdentifier:@"toInputPasswordPage" sender:self];
-    }else{
-        [self performSegueWithIdentifier:@"toReceiveVerifyCodePage" sender:self];
+        _remindLabel.text = @"请输入！";
     }
 }
 
 #pragma mark textfield Delegate
--(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    NSLog(@"UITextFieldShouldEndEditing");
-    NSString *inputString = textField.text;
-    NSUInteger stringLength = [inputString length];
-    NSScanner* scan = [NSScanner scannerWithString:inputString];
-    int val;
-    BOOL isPureInt = [scan scanInt:&val] && [scan isAtEnd];
-    if (isPureInt && stringLength == 11) {
-        if (![inputString hasPrefix:@"1"]) {
-            _remindLabel.hidden = NO;
-            _remindLabel.text = @"您输入的手机号格式有误";
-        }else{
-            _account = inputString;
-            _accountType
-            = PHONENUMBER;
-        }
-    }else{
-        if ([inputString hasSuffix:@".com"]) {
-            _account = inputString;
-            _accountType = MAILBOXNUMBER;
-        }
-        _remindLabel.text = @"您输入的邮箱格式有误";
-    }
-    return YES;
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
 }
 
-#pragma mark - Navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"toInputPasswordPage"]) {
-        LoginPasswordVC *passwordVC = [segue destinationViewController];
-        passwordVC.account = _account;
-        passwordVC.accountType = _accountType;
-    }
-}
-
+#pragma mark 验证账号类型
 -(AccountType)verifyAccountTextContent{
     NSString* text = _accountTextField.text;
     NSString* numRegex = @"^[0-9]*$";
@@ -216,6 +164,43 @@
         }
     }
     return NETWORKTIMEOUT;
+}
+
+#pragma mark 检测当前网络状态
+-(BOOL)checkCurrentNetworkState{
+    NetworkStatus enabelWifi = [[CommonHeadFile getCommonHeadFileInstance] getNetWorkStates];
+    //判断没有WiFi或者不是WiFi就打开WiFi的设置界面
+    if(enabelWifi != ReachableViaWiFi){
+        NSString *message = @"您的手机没有处在WIFI网络中";
+        NSString *settingButton = @"设置";
+        NSString *cancelButton = @"取消";
+        UIAlertController *alertDialog = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *settingAction = [UIAlertAction actionWithTitle:settingButton style:UIAlertActionStyleDefault handler:^(UIAlertAction* action){
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButton style:UIAlertActionStyleDefault handler:^(UIAlertAction* action){
+            [alertDialog dismissViewControllerAnimated:YES completion:^{}];
+        }];
+        [alertDialog addAction:cancelAction];
+        [alertDialog addAction:settingAction];
+        [self presentViewController:alertDialog animated:YES completion:nil];
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toInputPasswordPage"]) {
+        LoginPasswordVC *passwordVC = [segue destinationViewController];
+        passwordVC.account = _account;
+        passwordVC.accountType = _accountType;
+    }else if ([segue.identifier isEqualToString:@"toReceiveVerifyCodePage"]){
+        VerifyVC *verifyVC =  [segue destinationViewController];
+        verifyVC.account = _account;
+        verifyVC.accountType = PHONENUMSUCCESS;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

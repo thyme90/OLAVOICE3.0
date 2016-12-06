@@ -58,6 +58,7 @@ static BOOL leftSliderOpenOrNot = NO;//控制中心侧边栏是否打开
 #import "FMDatabase.h"
 #import "AsyncSocket.h"
 #import "UIImageView+WebCache.h"
+#import "MZTimerLabel.h"
 //====================================
 // ------------------------------------------------------ helpers 單例
 #import "CommonHeadFile.h"

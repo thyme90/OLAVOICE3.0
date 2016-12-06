@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0D35C307EEB5FBA113E613A6879466FD0EF47305",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0D35C307EEB5FBA113E613A6879466FD0EF47305" : 9223372036854775807,
+    "B96E85E09CA4E795C8119653215C87A2E6E3E757" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E6FD84BE-25A6-4760-A5AD-BEF85E408542",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0D35C307EEB5FBA113E613A6879466FD0EF47305" : "OLAVoice3.0\/",
+    "B96E85E09CA4E795C8119653215C87A2E6E3E757" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NoScreenAudio",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NoScreenAudio.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/thyme90\/OLAVoice3.0.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0D35C307EEB5FBA113E613A6879466FD0EF47305"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/lym-ay\/AudioWithoutScree.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B96E85E09CA4E795C8119653215C87A2E6E3E757"
+    }
+  ]
+}

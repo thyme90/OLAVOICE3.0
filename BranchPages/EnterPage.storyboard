@@ -265,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lIr-dR-WJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="417" y="-1640"/>
+            <point key="canvasLocation" x="305" y="-954"/>
         </scene>
         <!--Box SettingVC-->
         <scene sceneID="svl-nY-jEQ">
@@ -300,7 +300,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sxM-4Z-eJr">
-                                        <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -313,14 +313,14 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="连接音箱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P8-kX-MOr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="连接音箱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="5P8-kX-MOr">
                                         <rect key="frame" x="20" y="15" width="72" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVL-Sq-zxO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="ZVL-Sq-zxO">
                                         <rect key="frame" x="185" y="18" width="150" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -343,7 +343,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Np-XI-YXc">
-                                        <rect key="frame" x="0.0" y="111" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -361,21 +361,21 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="开启后手机音源由音箱播出" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQA-hy-Rhi">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="开启后手机音源由音箱播出" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="NQA-hy-Rhi">
                                         <rect key="frame" x="20" y="85" width="250" height="12"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.81960784313725488" green="0.82745098039215681" blue="0.83137254901960778" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="连接音箱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1D5-aG-gyZ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="默认音箱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="1D5-aG-gyZ">
                                         <rect key="frame" x="20" y="65" width="72" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="连接音箱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38g-aV-L4y">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="连接音箱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="38g-aV-L4y">
                                         <rect key="frame" x="20" y="15" width="72" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -390,7 +390,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tCU-nf-j05">
-                                        <rect key="frame" x="0.0" y="152" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -409,7 +409,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="称呼设置" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqU-9x-Rj9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="称呼设置" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="hqU-9x-Rj9">
                                         <rect key="frame" x="20" y="66" width="72" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -420,7 +420,7 @@
                                         <rect key="frame" x="348" y="64" width="13" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="音箱位置与命名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82c-hN-ecT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="音箱位置与命名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="82c-hN-ecT">
                                         <rect key="frame" x="20" y="15" width="120" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -431,21 +431,21 @@
                                         <rect key="frame" x="348" y="13" width="13" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="音箱唤醒名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKw-TC-Pfv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="音箱唤醒名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZKw-TC-Pfv">
                                         <rect key="frame" x="20" y="117" width="100" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="主人" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFL-21-RKl">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="主人" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="tFL-21-RKl">
                                         <rect key="frame" x="235" y="69" width="100" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="小丹丹" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8po-Cr-BjU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="小丹丹" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="8po-Cr-BjU">
                                         <rect key="frame" x="255" y="120" width="100" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -884,6 +884,8 @@
                         <outlet property="m_userNickNameLabel" destination="Jhj-Jl-z0Q" id="MMF-ZD-oEc"/>
                         <outlet property="userNameLabel" destination="SGO-TF-ozT" id="fKb-DK-usy"/>
                         <outlet property="userPicButton" destination="UQy-Vm-quD" id="6RO-2z-eHo"/>
+                        <segue destination="32A-dQ-Fly" kind="presentation" id="dX5-ht-rIe"/>
+                        <segue destination="a88-0R-0fj" kind="presentation" id="951-a4-K9t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFg-5V-sGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -908,7 +910,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2913" y="-74"/>
+            <point key="canvasLocation" x="-2938" y="-1"/>
         </scene>
         <!--Change NicknameVC-->
         <scene sceneID="ymO-Mn-YkH">
@@ -933,6 +935,9 @@
                                 <state key="normal" title="取消">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonClickAction:" destination="sAD-qf-hhJ" eventType="touchUpInside" id="Ntr-o8-QtF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ui1-PX-l8X">
                                 <rect key="frame" x="325" y="30" width="50" height="40"/>
@@ -974,7 +979,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yt2-5s-vT0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3642" y="839"/>
+            <point key="canvasLocation" x="-3796" y="816"/>
         </scene>
         <!--Change MailVC-->
         <scene sceneID="xEA-Gj-OBk">
@@ -1006,6 +1011,9 @@
                                 <state key="normal" title="取消">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonClickAction:" destination="bbo-rr-ijU" eventType="touchUpInside" id="qhe-8e-x61"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="原账号：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fz1-Sc-Qll">
                                 <rect key="frame" x="15" y="125" width="75" height="30"/>
@@ -1101,11 +1109,12 @@
                         <outlet property="remindLabel" destination="Tc8-Ia-Klp" id="63Z-GC-imy"/>
                         <outlet property="remindReasonLabel" destination="2im-EY-vKA" id="rhH-zB-fuj"/>
                         <outlet property="verificationCodeTextField" destination="daV-PC-Wv6" id="Igo-Xr-H1L"/>
+                        <segue destination="R9L-gh-IP7" kind="presentation" identifier="toFinishChangeMailPage" id="r6T-bp-c4F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfj-Zc-fle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2874" y="839"/>
+            <point key="canvasLocation" x="-2874" y="817"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="N8S-hL-55G">
@@ -1157,8 +1166,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBQ-bz-lif">
-                                <rect key="frame" x="35" y="330" width="150" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="gBQ-bz-lif">
+                                <rect key="frame" x="35" y="325" width="250" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.95686274509803915" green="0.32549019607843138" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
@@ -1176,6 +1185,7 @@
                     </view>
                     <connections>
                         <outlet property="accountTextField" destination="3Ru-hY-UMn" id="AQa-tq-iwU"/>
+                        <outlet property="nextStepButton" destination="DsZ-QA-8zh" id="dHH-0g-1oa"/>
                         <outlet property="remindLabel" destination="gBQ-bz-lif" id="g8g-1Q-apk"/>
                         <segue destination="gGm-NL-EBp" kind="presentation" identifier="toInputPasswordPage" id="lYg-HF-Ovn"/>
                         <segue destination="Hyw-YJ-0Th" kind="presentation" identifier="toReceiveVerifyCodePage" id="mu7-Lu-x0l"/>
@@ -1253,7 +1263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TQ-YM-fuz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1412" y="-1"/>
+            <point key="canvasLocation" x="1404" y="-20"/>
         </scene>
         <!--Voice SettingVC-->
         <scene sceneID="NiV-jC-UMK">
@@ -1276,7 +1286,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BHD-eY-5bZ">
-                                        <rect key="frame" x="0.0" y="101" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -1305,7 +1315,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="朗读人声" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPM-ie-Xhy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="朗读人声" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="aPM-ie-Xhy">
                                         <rect key="frame" x="20" y="15" width="72" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1317,7 +1327,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="称呼设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvh-YQ-upD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="称呼设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="uvh-YQ-upD">
                                         <rect key="frame" x="20" y="65" width="70" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1383,7 +1393,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view alpha="0.60000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QCn-Y4-WLL">
-                                        <rect key="frame" x="0.0" y="101" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -1392,7 +1402,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="语音播报" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQv-TD-gaQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="语音播报" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="gQv-TD-gaQ">
                                         <rect key="frame" x="20" y="15" width="72" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1410,7 +1420,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="智能语音" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjd-LA-h20">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="智能语音" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Sjd-LA-h20">
                                         <rect key="frame" x="20" y="65" width="70" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1517,7 +1527,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2329" y="-1"/>
+            <point key="canvasLocation" x="2233" y="-20"/>
         </scene>
         <!--Finish Change MailVC-->
         <scene sceneID="p1B-KQ-E4h">
@@ -1645,11 +1655,12 @@
                         <outlet property="remindLabel" destination="Ixm-hP-dMb" id="dnP-ta-4Sk"/>
                         <outlet property="remindReasonLabel" destination="6li-Qd-AdP" id="1cp-fX-4IG"/>
                         <outlet property="verificationCodeTextField" destination="Cae-HY-2wT" id="sf0-hP-jkI"/>
+                        <segue destination="6Eu-V5-xUM" kind="presentation" identifier="backToUserCenterPage" id="i1b-Ag-JMK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FtB-B2-8G5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2874" y="1579"/>
+            <point key="canvasLocation" x="-3702" y="1577"/>
         </scene>
         <!--Binding PhoneVC-->
         <scene sceneID="jhV-xT-Xk6">
@@ -1746,16 +1757,22 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="sendVerificationCodeButtonAction:" destination="a88-0R-0fj" eventType="touchUpInside" id="4tg-sE-1Wj"/>
+                                    <action selector="sendVerificationCodeButtonAction:" destination="a88-0R-0fj" eventType="touchUpInside" id="fzt-4f-ceD"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="phoneNumberTextField" destination="uLx-ip-LCW" id="6YF-tY-h1s"/>
+                        <outlet property="remindReasonLabel" destination="o3g-Yo-LHX" id="ycW-nC-7Xh"/>
+                        <outlet property="sendButton" destination="Vfh-4L-PmZ" id="TH2-sF-bGk"/>
+                        <outlet property="verificationCodeTextField" destination="xXj-Ee-PYF" id="nWb-fT-AFc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Wy-Yr-DIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2135" y="839"/>
+            <point key="canvasLocation" x="-2135" y="816"/>
         </scene>
         <!--Login PasswordVC-->
         <scene sceneID="iPl-Qk-FUK">
@@ -1849,6 +1866,7 @@
                         <outlet property="accountTypeLabel" destination="Cdf-Np-0k9" id="VAy-3g-r1v"/>
                         <outlet property="passwordTextField" destination="mMq-G1-yAg" id="zZg-wE-lSx"/>
                         <outlet property="remindLabel" destination="R3Q-wP-CFs" id="x4E-jb-tzp"/>
+                        <segue destination="iTn-ar-i1f" kind="presentation" identifier="finishPasswordLogToMainPage" id="0eo-E5-WtL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXz-3Z-S0z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1962,6 +1980,7 @@
                         <outlet property="verifyTypeImage" destination="QOp-TD-vQa" id="Pk2-6f-MAZ"/>
                         <outlet property="verifyTypeLabel" destination="0xh-3I-yov" id="W4z-1d-K2W"/>
                         <segue destination="6KC-0A-XzB" kind="presentation" identifier="toResetPasswordPage" id="OrL-Ro-Q18"/>
+                        <segue destination="iTn-ar-i1f" kind="presentation" identifier="finishMessageLogToMainPage" id="3Me-ty-Hie"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s36-qU-ylq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2075,6 +2094,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="phoneNumberTextField" destination="9Hg-XE-Gga" id="t4l-1p-MT0"/>
+                        <outlet property="remindReasonLabel" destination="8yT-sd-BKQ" id="dB0-ai-X9s"/>
+                        <outlet property="sendButton" destination="gd9-FA-w5L" id="CbO-tI-azv"/>
+                        <outlet property="verificationCodeTextField" destination="gEJ-D9-Kb6" id="fxF-MP-gve"/>
+                        <segue destination="Hbt-8X-y8r" kind="presentation" id="XAe-88-yZB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bl-dG-ctl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2181,6 +2207,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="phoneNumberTextField" destination="hpD-9C-5e1" id="SCB-Mn-CVo"/>
+                        <outlet property="remindReasonLabel" destination="ew3-MP-FZ6" id="aNm-MN-g1V"/>
+                        <outlet property="sendButton" destination="Iw4-0e-q2d" id="nFH-dt-mJ4"/>
+                        <outlet property="verificationCodeTextField" destination="nTD-WT-vJF" id="93P-cO-05f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kq6-ie-PNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2333,6 +2365,9 @@
                                 <state key="normal" title="确定" backgroundImage="buttonBorder.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmButtonAction:" destination="6KC-0A-XzB" eventType="touchUpInside" id="fPV-yj-90Z"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新的密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VmZ-Vd-x1h">
                                 <rect key="frame" x="35" y="290" width="305" height="30"/>
@@ -2383,6 +2418,7 @@
                         <outlet property="confirmTextField" destination="wyx-22-9ue" id="Ah9-RE-cq5"/>
                         <outlet property="passwordTextField" destination="VmZ-Vd-x1h" id="98K-FM-dbK"/>
                         <outlet property="remindAccountLabel" destination="VyZ-De-Zcr" id="nE2-hy-qsI"/>
+                        <segue destination="iTn-ar-i1f" kind="presentation" identifier="resetPasswordBackToMainPage" id="HAC-Ab-zcC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tnb-rS-jha" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2567,6 +2603,8 @@
         <image name="usernameBackground.png" width="98" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="HSt-vc-el1"/>
+        <segue reference="HAC-Ab-zcC"/>
         <segue reference="x70-G6-C0y"/>
     </inferredMetricsTieBreakers>
 </document>
