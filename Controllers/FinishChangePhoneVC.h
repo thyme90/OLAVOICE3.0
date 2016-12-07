@@ -14,5 +14,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UITextField *verificationCodeTextField;
 @property (strong, nonatomic) NSString *oldPhoneNumber;
-@property (strong, nonatomic) NSString *newPhoneNumber;
+@property (strong, nonatomic) NSString *anotherPhoneNumber;
 @end

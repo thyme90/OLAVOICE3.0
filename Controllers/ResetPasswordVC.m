@@ -136,6 +136,62 @@
     }
 }
 
+/*
+#pragma mark 为新注册的账号设置密码
+-(void)buttonClick{
+    BOOL isSuccess = [self verifyPassword];
+    if (!isSuccess) {
+        return;
+    }
+    
+           UIAlertController *alertDialog = [UIAlertController alertControllerWithTitle:nil message:@"      正在注册" preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        UIActivityIndicatorView *activeView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        
+        
+        activeView.frame = CGRectMake(50,25,10,10);
+        [activeView startAnimating];
+        [alertDialog.view addSubview:activeView];
+        [self presentViewController:alertDialog animated:YES completion:^(void){
+            SeverStatus severStatus = [self sendToServerForRegister];
+            switch (severStatus) {
+                case SEVERSTATUSSUCCESS:{
+                    [alertDialog dismissViewControllerAnimated:YES completion:^(void){
+                        UIAlertView  *alertSuccess =[[UIAlertView alloc] initWithTitle:nil
+                                                                               message:@"请激活您的邮箱以完成注册"
+                                                                              delegate:self
+                                                                     cancelButtonTitle:@"激活"
+                                                                     otherButtonTitles:@"取消",nil];
+                        [alertSuccess show];
+                    }];
+                }
+                    break;
+                case SEVERSTATUSFAIL:{
+                    [alertDialog dismissViewControllerAnimated:YES completion:^(void){
+                        UIAlertView  *alertSuccess =[[UIAlertView alloc] initWithTitle:nil
+                                                                               message:@"注册失败，请稍后再试"
+                                                                              delegate:self
+                                                                     cancelButtonTitle:@"重试"
+                                                                     otherButtonTitles:@"取消",nil];
+                        
+                        [alertSuccess show];
+                    }];
+                }
+                    break;
+                case NETWORKTIMEOUT:{
+                    errorLabel.hidden = NO;
+                    errorLabel.text = @"网络出错，请重新连接!";
+                }
+                    break;
+                default:
+                    break;
+            }
+        }];
+    }
+}
+*/
+
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

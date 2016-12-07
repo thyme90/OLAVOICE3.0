@@ -22,6 +22,19 @@
 @property (weak, nonatomic) IBOutlet UIView *leftSidebar;
 
 @property (weak, nonatomic) IBOutlet UIView *buttonboardView;
+@property (weak, nonatomic) IBOutlet UIImageView *triangle1;
+@property (weak, nonatomic) IBOutlet UIImageView *triangle2;
+@property (weak, nonatomic) IBOutlet UIImageView *triangle3;
+@property (weak, nonatomic) IBOutlet UIImageView *triangle4;
+@property (weak, nonatomic) IBOutlet UIImageView *triangle5;
+@property (weak, nonatomic) IBOutlet UIImageView *triangle6;
+@property (weak, nonatomic) IBOutlet UIButton *button1;
+@property (weak, nonatomic) IBOutlet UIButton *button2;
+@property (weak, nonatomic) IBOutlet UIButton *button3;
+@property (weak, nonatomic) IBOutlet UIButton *button4;
+@property (weak, nonatomic) IBOutlet UIButton *button5;
+@property (weak, nonatomic) IBOutlet UIButton *button6;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *userCenterButton;
 

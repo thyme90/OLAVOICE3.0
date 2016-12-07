@@ -64,7 +64,7 @@
                 switch (severStatus) {
                     case SEVERSTATUSSUCCESS:{
 //                            userManager.phoneVcode = vcode;//保存新的验证码
-//                            userManager.userName = newPhoneNum;//保存新的手机号码
+//                            userManager.userName = anotherPhoneNum;//保存新的手机号码
 //                            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"手机号修改成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
 //                            [alert show];
 //                            

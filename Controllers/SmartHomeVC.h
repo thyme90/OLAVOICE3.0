@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SmartHomeVC : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *addDeviceView;
 
 @end

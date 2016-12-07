@@ -1,35 +1,37 @@
 //
-//  VerifyVC.m
+//  VerifyRegisterVC.m
 //  NoScreenAudio
 //
-//  Created by S3Graphic on 16/11/16.
+//  Created by S3Graphic on 16/12/6.
 //  Copyright © 2016年 s3graphics. All rights reserved.
 //
 
-#import "VerifyVC.h"
+#import "VerifyRegisterVC.h"
 #import "macro.h"
-@interface VerifyVC ()<UITextFieldDelegate,MZTimerLabelDelegate>{
+#import "CommonHeadFile.h"
+@interface VerifyRegisterVC ()<UITextFieldDelegate,MZTimerLabelDelegate>{
     UILabel *timer_show;
 }
 
+
 @end
 
-@implementation VerifyVC
+@implementation VerifyRegisterVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_verificationCodeTextField setValue:[UIColor colorWithWhite:1.0 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
-    if (_accountType == PHONENUMBER) {
-        _verifyTypeImage.image =  [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"icnMessage" ofType:@"png"]];
-    }else if (_accountType == MAILBOXNUMBER){
-        _verifyTypeImage.image =  [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"icnMail" ofType:@"png"]];
-    }else{
-        
-    }
-    _verifyTypeLabel.hidden = YES;
+    _remindView.hidden = YES;
+    _remindLabel.hidden = YES;
+    _accountRemindLabel.text = [NSString stringWithFormat:@"验证码已发送至%@",self.account];
+    [self sendVerifyCodeToPhone];
+    _verificationCodeTextField.delegate = self;
 }
 
-- (IBAction)sendVerificationButtonAction:(UIButton *)sender {
+- (IBAction)backAndReInput:(UITapGestureRecognizer *)sender {
+    [self dismissViewControllerAnimated:YES completion:^{    }];
+}
+
+- (IBAction)sendVerificationCodeButtonClickAction:(id)sender {
     [_sendVerificationButton setTitle:nil forState:UIControlStateNormal];//把按钮原先的名字消掉
     [_sendVerificationButton setBackgroundImage:[UIImage imageNamed:@"btn-gray-right-pressed"]  forState:UIControlStateNormal];
     timer_show = [[UILabel alloc] initWithFrame:CGRectMake(265*nKwidth, 332*nKheight, 85*nKwidth,25*nKheight)];//UILabel设置成和UIButton一样的尺寸和位置
@@ -43,73 +45,51 @@
     timer_cutDown.delegate = self;//设置代理，以便后面倒计时结束时调用代理
     _sendVerificationButton.userInteractionEnabled = NO;//按钮禁止点击
     [timer_cutDown start];//开始计时
-    [self sendVerifyCode];//发送验证码
+    [self sendVerifyCodeToPhone];//发送验证码
 }
 
-- (IBAction)confirmVerifyFinish:(UIButton *)sender {
-    //验证码后登录
-    //[self performSegueWithIdentifier:@"finishMessageLogToMainPage" sender:self];
-    UIAlertController *alertDialog = [UIAlertController alertControllerWithTitle:nil message:@"      正在登陆" preferredStyle:UIAlertControllerStyleAlert];
-    UIActivityIndicatorView *activeView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    activeView.frame = CGRectMake(50,25,10,10);
-    [activeView startAnimating];
-    [alertDialog.view addSubview:activeView];
-    [self presentViewController:alertDialog animated:YES completion:^(void){
-        SeverStatus severStatus = [self sendToServerForRegisterAndLogin];
-        switch (severStatus) {
-            case SEVERSTATUSSUCCESS:{
-                
-            }
+- (IBAction)confirmButtonClickAction:(id)sender {
+    if (_verificationCodeTextField.text.length > 2) {
+        SeverStatus statu = [self sendToServerForRegisterAndLogin];
+        switch (statu) {
+            case SEVERSTATUSSUCCESS:
+                _remindView.hidden = NO;
+                _remindLabel.hidden = NO;
+                _remindLabel.text = @"注册成功";
+                [self performSelector:@selector(successDelayMethod) withObject:nil afterDelay:2.0f];
                 break;
-            case SEVERSTATUSFAIL:{
-                
-            }
+            case SEVERSTATUSFAIL:
+                _remindView.hidden = NO;
+                _remindLabel.hidden = NO;
+                _remindLabel.text =@"注册失败";
+                [self performSelector:@selector(failDelayMethod) withObject:nil afterDelay:2.0f];
                 break;
-            case NETWORKTIMEOUT:{
+            case NETWORKTIMEOUT:
+                _remindView.hidden = NO;
+                _remindLabel.hidden = NO;
+                _remindLabel.text =@"注册超时";
+                [self performSelector:@selector(failDelayMethod) withObject:nil afterDelay:2.0f];
+                break;
                 
-            }
             default:
                 break;
         }
-    }];
-    //验证后修改密码
-    //[self performSegueWithIdentifier:@"toResetPasswordPage" sender:self];
-}
-
-- (IBAction)backToLoginPage:(UITapGestureRecognizer *)sender {
-    [self  dismissViewControllerAnimated:YES completion:^{    }];
-}
-
-#pragma mark - Navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"toResetPasswordPage"]) {
-        ResetPasswordVC *resetPasswordVC = [segue destinationViewController];
-       resetPasswordVC.account = self.account;
     }
 }
 
-#pragma mark 检测当前网络状态
--(BOOL)checkCurrentNetworkState{
-    NetworkStatus enabelWifi = [[CommonHeadFile getCommonHeadFileInstance] getNetWorkStates];
-    //判断没有WiFi或者不是WiFi就打开WiFi的设置界面
-    if(enabelWifi != ReachableViaWiFi){
-        NSString *message = @"您的手机没有处在WIFI网络中";
-        NSString *settingButton = @"设置";
-        NSString *cancelButton = @"取消";
-        UIAlertController *alertDialog = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *settingAction = [UIAlertAction actionWithTitle:settingButton style:UIAlertActionStyleDefault handler:^(UIAlertAction* action){
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButton style:UIAlertActionStyleDefault handler:^(UIAlertAction* action){
-            [alertDialog dismissViewControllerAnimated:YES completion:^{}];
-        }];
-        [alertDialog addAction:cancelAction];
-        [alertDialog addAction:settingAction];
-        [self presentViewController:alertDialog animated:YES completion:nil];
-        return NO;
-    }else{
-        return YES;
-    }
+- (void)successDelayMethod{
+    _remindView.hidden = YES;
+    _remindLabel.hidden = YES;
+    [self performSegueWithIdentifier:@"toRegisterBackMainPage" sender:self];
+}
+- (void)failDelayMethod{
+    _remindView.hidden = YES;
+    _remindLabel.hidden = YES;
+}
+
+-(void)sendVerifyCodeToPhone{
+    HttpConnect* httpCon = [HttpConnect getHttpConnectInstance];
+    [httpCon getVerifyCode:self.account newPhoneNum:@"" vcode:@"" opt:@"login"];
 }
 
 #pragma mark--实现定时器类定义的接口
@@ -117,16 +97,16 @@
     [timer_show removeFromSuperview];//移除倒计时模块
     [_sendVerificationButton setTitle:@"重新发送" forState:UIControlStateNormal];//倒计时结束后按钮名称改为"发送验证码"
     _sendVerificationButton.userInteractionEnabled = YES;//按钮可以点击
-    //[_sendButton setTitle:@"获取验证码" forState:UIControlStateNormal];
 }
 
-#pragma mark --把当前用户的登录信息发送至server
+#pragma mark --把当前用户的注册\登陆信息发送给sever
 -(SeverStatus)sendToServerForRegisterAndLogin{
     NSString* phoneNum = self.account;
     NSString* verifyCode = _verificationCodeTextField.text;
     NSString *url = nil;
-    if (self.accountType == PHONENUMSUCCESS){
-        url =[[NSString alloc] initWithFormat:@"%@mobile=%@&vcode=%@&deviceid=%@&clientid=%@",LOGINURL,phoneNum,verifyCode,DEVICEID,CLINETID];
+    //注册和登陆对应的网址是不一样的，所以要做区分
+    if (self.accountType == PHONEREGISTER) {
+        url =[[NSString alloc] initWithFormat:@"%@mobile=%@&vcode=%@&deviceid=%@&clientid=%@",REGISTERURL,phoneNum,verifyCode,DEVICEID,CLINETID];
     }
     NSURLRequest *urlRequest =[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:TIMEOUTINTERVAL];
     NSURLResponse * response = nil;
@@ -134,6 +114,9 @@
     NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
                                           returningResponse:&response
                                                       error:&error];
+    NSString *aString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"data is %@",aString);
+    
     int status = -1;
     NSDictionary* dataDic = nil;
     //连接成功
@@ -141,6 +124,7 @@
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data
                                                                    options:NSJSONReadingAllowFragments
                                                                      error:&error];
+        
         if (dictionary){
             status =[[dictionary objectForKey:@"status"] intValue];
             dataDic = [dictionary objectForKey:@"data"];
@@ -148,7 +132,9 @@
         }
         //status = 0 成功，-1失败
         if (!status) {
-             if (self.accountType == PHONENUMSUCCESS){
+            if (self.accountType == PHONEREGISTER) {
+                NSLog(@"手机注册成功");
+            }else if (self.accountType == PHONENUMSUCCESS){
                 NSLog(@"手机登陆成功");
             }
             NSString* nickName = [dataDic objectForKey:@"nickname"];
@@ -162,9 +148,11 @@
             userManger.accountType = PHONENUMSUCCESS;
             userManger.phoneVcode = verifyCode;
             return SEVERSTATUSSUCCESS;
+            
         }else{
             return SEVERSTATUSFAIL;
         }
+        
     }else{
         return NETWORKTIMEOUT;
     }
@@ -176,13 +164,19 @@
     return YES;
 }
 
--(void)sendVerifyCode{
-    NSLog(@"重新发送登录验证");
-    HttpConnect* httpCon = [HttpConnect getHttpConnectInstance];
-    [httpCon getVerifyCode:self.account newPhoneNum:@"" vcode:@"" opt:@"login"];
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = touches.anyObject;
+    // 如果点击到UITextField以外的View则收回键盘
+    if (![touch.view isKindOfClass:[UITextField class]]) {
+        [self.view endEditing:YES];
+    }
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
+
 @end

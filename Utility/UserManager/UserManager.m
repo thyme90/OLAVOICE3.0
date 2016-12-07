@@ -52,6 +52,7 @@ static UserManager* UserManagerInstance = nil;
     self.nickNameSetting    = @"";
     self.oldPhoneNum        = @"";
     self.oldVcode           = @"";
+    self.buttonNames = [@[@"0",@"1",@"3"]mutableCopy];
 }
 
 

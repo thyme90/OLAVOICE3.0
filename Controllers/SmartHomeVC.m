@@ -7,8 +7,8 @@
 //
 
 #import "SmartHomeVC.h"
-
-@interface SmartHomeVC ()
+#import "macro.h"
+@interface SmartHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -17,7 +17,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading
+//    [self.tableView registerClass:[SmartHomeCell class] forCellReuseIdentifier:@"smartHomeVCCell"];
 }
+- (IBAction)addDevice:(UITapGestureRecognizer *)sender {
+    NSLog(@"开始跳转");
+    [self performSegueWithIdentifier:@"toAddDevicePage" sender:self];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 55*nKheight;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+        SmartHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"smartHomeVCCell" forIndexPath:indexPath];
+        return cell;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
