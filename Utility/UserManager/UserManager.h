@@ -31,6 +31,8 @@
 @property(strong,nonatomic) NSString*           currentBoxName;//当前可用音箱的名称，及设备名称
 @property(strong,nonatomic) NSString*           oldPhoneNum;//旧手机号
 @property(strong,nonatomic) NSString*           oldVcode;//进行修改手机号的时候，保存旧手机号的验证码
+@property(strong,nonatomic) NSMutableArray *buttonNames;
+
 
 -(void)initUserManager;
 -(void)reflectDataFromOtherObject;//利用反射机制获得所有属性的值

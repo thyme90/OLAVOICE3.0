@@ -7,6 +7,7 @@
 //
 
 #import "DeviceLinkPhoneVC.h"
+#import "macro.h"
 
 @interface DeviceLinkPhoneVC ()
 
@@ -16,12 +17,62 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tittleLabel.text = [NSString stringWithFormat:@"%@连接手机",_deviceName];
+    
+    NSString *content = @"音箱需与手机进行匹配连接，进入手机设置无线局域网选择 ola-wifi";
+    NSRange olaRange = [content rangeOfString:@"ola-wifi"];
+    NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc] initWithString:content];
+    [attributeStr addAttributes:@{NSForegroundColorAttributeName : COLOR(45, 214, 236, 1.0)}  range:olaRange];
+    _remindLabel.attributedText = attributeStr;
+    
+}
+- (IBAction)remindLabelTapGestureAction:(UITapGestureRecognizer *)sender {
+    NSURL *url = [NSURL URLWithString:@"prefs:root=WIFI"];
+    if ([[UIApplication sharedApplication] canOpenURL:url])
+    {
+        [[UIApplication sharedApplication] openURL:url];
+    }else{
+        
+    }
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
+}
+- (IBAction)littleCancelButtonClickAction:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)bigCancleClickAction:(id)sender {
+    NSLog(@"will open");
+    NSURL *url = [NSURL URLWithString:@"Prefs:root=General&path=About"];
+    if ([[UIApplication sharedApplication] canOpenURL:url])
+    {
+        [[UIApplication sharedApplication] openURL:url];
+    }else{
+        NSLog(@"can not open");
+    }
+}
+
+#pragma mark 检测当前网络状态
+-(BOOL)checkCurrentNetworkState{
+    NetworkStatus enabelWifi = [[CommonHeadFile getCommonHeadFileInstance] getNetWorkStates];
+    //判断没有WiFi或者不是WiFi就打开WiFi的设置界面
+    if(enabelWifi != ReachableViaWiFi){
+        NSString *message = @"您的手机没有处在WIFI网络中";
+        NSString *settingButton = @"设置";
+        NSString *cancelButton = @"取消";
+        UIAlertController *alertDialog = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *settingAction = [UIAlertAction actionWithTitle:settingButton style:UIAlertActionStyleDefault handler:^(UIAlertAction* action){
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButton style:UIAlertActionStyleDefault handler:^(UIAlertAction* action){
+            [alertDialog dismissViewControllerAnimated:YES completion:^{}];
+        }];
+        [alertDialog addAction:cancelAction];
+        [alertDialog addAction:settingAction];
+        [self presentViewController:alertDialog animated:YES completion:nil];
+        return NO;
+    }else{
+        return YES;
+    }
 }
 
 /*
@@ -52,7 +103,7 @@
     });
 }
 
-
+15237665245
 
 //#pragma mark --选择单元格
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -78,6 +129,11 @@
 //                });
 //            }
  */
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 #pragma mark - Navigation
 

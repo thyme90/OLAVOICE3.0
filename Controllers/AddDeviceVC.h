@@ -10,5 +10,5 @@
 
 @interface AddDeviceVC : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong,nonatomic) NSString *chooseDeviceName;
 @end

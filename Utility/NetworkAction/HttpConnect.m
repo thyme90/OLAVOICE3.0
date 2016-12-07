@@ -72,7 +72,6 @@ static HttpConnect* httpConnectInstance = nil;
             status =[[dictionary objectForKey:@"status"] intValue];
             //NSLog(@"用户是否存在状态码是%d",status);
         }
-        
         if (status) {
             NSLog(@"用户存在");
             return YES;
@@ -80,35 +79,25 @@ static HttpConnect* httpConnectInstance = nil;
              NSLog(@"用户不存在");
             return NO;
         }
-
     }
-    
-    
     return NO;
-    
 }
 
 //手机注册
 -(void)phoneRegister:(NSString *)phoneNum verifyCode:(NSString*)verifycode{
-    
-    
     NSURL *url = [NSURL URLWithString:REGISTERURL];
     NSString *post=[[NSString alloc] initWithFormat:@"mobile=%@&vcode=%@&deviceid=%@&clientid=%@",phoneNum,verifycode,DEVICEID,CLINETID];
-    
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding];
-    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postData];
     [request setTimeoutInterval:10.0];
-    
     UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@""
                                                    message:@"正在注册"
                                                   delegate:self
                                          cancelButtonTitle:nil
                                          otherButtonTitles:nil,nil];
     [alert show];
-
     NSOperationQueue *queue = [[NSOperationQueue alloc]init];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:queue
@@ -148,9 +137,7 @@ static HttpConnect* httpConnectInstance = nil;
                                    
                                }
                            }];
-
     NSLog(@"phoneRegister");
-    
 }
 
 //邮箱注册
@@ -164,13 +151,6 @@ static HttpConnect* httpConnectInstance = nil;
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postData];
     [request setTimeoutInterval:10.0];
-    
-//    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@""
-//                                                   message:@"正在注册"
-//                                                  delegate:self
-//                                         cancelButtonTitle:nil
-//                                         otherButtonTitles:nil,nil];
-//    [alert show];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc]init];
     [NSURLConnection sendAsynchronousRequest:request
@@ -213,9 +193,7 @@ static HttpConnect* httpConnectInstance = nil;
                                    
                                }
                            }];
-    
     NSLog(@"phoneRegister");
-
 }
 
 #pragma mark --发送邮箱地址
@@ -227,14 +205,6 @@ static HttpConnect* httpConnectInstance = nil;
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postData];
     [request setTimeoutInterval:10.0];
-    
-//    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@""
-//                                                   message:@"正在注册"
-//                                                  delegate:self
-//                                         cancelButtonTitle:nil
-//                                         otherButtonTitles:nil,nil];
-//    [alert show];
-    
     NSOperationQueue *queue = [[NSOperationQueue alloc]init];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:queue
@@ -269,8 +239,6 @@ static HttpConnect* httpConnectInstance = nil;
                                    }
                                    
                                    //[alert dismissWithClickedButtonIndex:0  animated:NO];
-                                   
-                                   
                                }
                            }];
     

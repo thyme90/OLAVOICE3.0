@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "macro.h"
+#import "CommonHeadFile.h"
 @interface RegisterVC : UIViewController
-
+@property (weak, nonatomic) IBOutlet UITextField *accountTextFeild;
+@property (weak, nonatomic) IBOutlet UILabel *remindLabel;
+@property (assign,nonatomic) AccountType accountType;
 @end

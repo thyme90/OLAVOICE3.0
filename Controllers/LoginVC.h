@@ -11,6 +11,7 @@
 @interface LoginVC : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *remindLabel;
+@property (weak, nonatomic) IBOutlet UIButton *nextStepButton;
 
 @property (strong, nonatomic) NSString *account;
 @property (assign,nonatomic) AccountType accountType;

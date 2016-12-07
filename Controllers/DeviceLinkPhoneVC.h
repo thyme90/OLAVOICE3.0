@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface DeviceLinkPhoneVC : UIViewController
+@property (strong,nonatomic) NSString *deviceName;
+@property (weak, nonatomic) IBOutlet UILabel *tittleLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *remindLabel;
 
 @end

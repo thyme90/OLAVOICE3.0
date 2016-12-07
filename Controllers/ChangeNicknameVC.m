@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _textField.delegate = self;
+    [_textField setValue:[UIColor colorWithWhite:1.0 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nickNameChangeAction) name:UITextFieldTextDidChangeNotification object:nil];
 }
 
@@ -34,6 +35,10 @@
     }
 }
 
+- (IBAction)cancelButtonClickAction:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
 #pragma mark  保存修改过的昵称
 - (IBAction)saveNickNameAction:(UIButton *)sender {
     NetworkStatus enabelWifi = [[CommonHeadFile getCommonHeadFileInstance] getNetWorkStates];

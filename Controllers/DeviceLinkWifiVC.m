@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tittleLabel.text = [NSString stringWithFormat:@"%@连接WiFi",_deviceName];
     //
     // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
     //
